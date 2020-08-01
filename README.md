@@ -33,7 +33,7 @@ I enjoy playing with all sorts of tech and learning new stuff.
 
 ### Links
 
-- [:page_with_curl: https://chrisweaver1.github.io/](https://chrisweaver1.github.io/)
+- [:page_with_curl: https://blog.weav.ovh/](https://blog.weav.ovh/)
 - [:blue_book: https://www.linkedin.com/in/chrisweaver2/](https://www.linkedin.com/in/chrisweaver2/)
 - [:envelope: chris.weaver.work@gmail.com](mailto:chris.weaver.work@gmail.com)
 
