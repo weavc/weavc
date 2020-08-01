@@ -1,15 +1,18 @@
 ### Chris Weaver
 ##### Software developer with a background in ethical hacking
 
+Currently working as a full stack developer, using Dotnet core, Microsoft SQL, MongoDB, NodeJS, Angular and Electron. 
+
+I enjoy playing with all sorts of tech and learning new stuff.
 
 ### Lanuages and Tools
 
-<img align="left" alt="angular" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/angular/angular.png">
-<img align="left" alt="github actions" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/actions/actions.png">
-<img align="left" alt="azure" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/azure/azure.png">
 <img align="left" alt="csharp" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/csharp/csharp.png">
 <img align="left" alt="docker" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/docker/docker.png">
 <img align="left" alt="dotnet" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/dotnet/dotnet.png">
+<img align="left" alt="angular" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/angular/angular.png">
+<img align="left" alt="github actions" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/actions/actions.png">
+<img align="left" alt="azure" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/azure/azure.png">
 <img align="left" alt="git" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/git/git.png">
 <img align="left" alt="github" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/github/github.png">
 <img align="left" alt="go" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/go/go.png">
