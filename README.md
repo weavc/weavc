@@ -4,6 +4,8 @@ Currently working as a full stack developer, using Dotnet core, Microsoft SQL, M
 
 I enjoy playing with all sorts of tech and learning new stuff.
 
+---
+
 ### Lanuages and Tools
 
 <img align="left" alt="csharp" width="36px" src="https://raw.githubusercontent.com/github/explore/master/topics/csharp/csharp.png">
