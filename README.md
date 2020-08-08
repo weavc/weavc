@@ -1,4 +1,4 @@
-#### Software developer with a background in ethical hacking
+#### Software developer with a background in ethical hacking and security.
 
 Currently working as a full stack developer, using Dotnet core, Microsoft SQL, MongoDB, NodeJS, Angular and Electron. 
 
