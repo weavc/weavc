@@ -1,0 +1,34 @@
+{% include breadcrumbs.html %}
+
+<div class="row px-xs-1 px-sm-1 px-md-2 px-lg-3 px-xl-3">
+    <div class="col-12">
+        <div class="row">
+            <!-- <h3 class="col-12">Projects</h3> -->
+           <hr class="col mb-3" />
+        </div>
+
+        <div class="container-fluid content-row">
+            <div class="row">
+                {% assign items = site.posts %}
+                {%- for p in items %}
+                <div class="col-12 mb-2 px-1">
+                    <div class="card main-bg-dark h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{p.title}}</h5>
+                            <p class="card-text">
+                                {{p.description}}
+                                <br />
+                                <br />
+                                {% for tag in p.tags %}<span class="badge badge-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a class="float-right" href="{{p.url}}"><small>Read more..&nbsp;<i class="fas fa-link"></i></small></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor -%}
+            </div>
+        </div>
+    </div>
+</div>

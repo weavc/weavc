@@ -1,0 +1,40 @@
+name: Ruby Build
+
+on: 
+  push:
+    branches:
+    - 'master'
+    paths: 
+      - './docs/'
+  pull_request:
+    branches:
+    - '*'
+    paths: 
+      - './docs/'
+
+defaults:
+  run:
+    working-directory: ./docs
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Build
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec jekyll build
+
+
+
+

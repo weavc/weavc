@@ -1,0 +1,61 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="title" content="{{ page.title }}">
+        <meta name="description" content="{{ page.description }}">
+        <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Chris Weaver - {{ page.title }}</title>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/fa/css/all.min.css"/>
+        <link rel="stylesheet" href="/assets/css/main.css"/>
+        <link rel="stylesheet" href="/assets/css/markdown.css"/>
+        
+
+    </head>
+
+    <body class="main-bg-dark d-flex flex-column">
+
+        <!-- Header -->
+        {% include header.html %}
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg main-bg-darker sticky-top flex-nowrap flex-row">
+            <div class="mx-auto" style="white-space: nowrap;">
+                <ul class="navbar-nav flex-row">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="/projects">Projects</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="/notebook">Notebook</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Site wrapper -->
+        <div class="site">
+            <div class="card main-card my-4">
+                <div class="card-body main-bg-darker">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="sticky-footer" class="footer main-bg-darker text-white-50 py-1">
+            {% include footer-links.html %}
+        </footer>
+    </body>
+
+</html>
+

@@ -1,0 +1,17 @@
+theme: jekyll-theme-minimal
+source: .
+destination: _site
+exclude:
+- Gemfile
+- Gemfile.lock
+- nginx.conf
+collections:
+    projects:
+        name: projects
+        output: true
+        permalink: "/projects/:path"
+kramdown:
+    syntax_highlighter_opts:
+        line_numbers: false
+        tab_width: 2
+        css: class

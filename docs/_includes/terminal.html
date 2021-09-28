@@ -1,0 +1,254 @@
+<div class="text-light" id="terminal">
+</div>
+
+<div hidden id="terminal-elements">
+    <span id="line" class="term-line"></span>
+    <span id="input" class="term-line no-wrap">
+    </span>
+</div>
+
+
+
+<script>
+motd = [
+`&nbsp;&nbsp;____&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__`,
+`&nbsp;/&nbsp;___|&nbsp;|__&nbsp;&nbsp;_&nbsp;__(_)___&nbsp;&nbsp;\\&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/__&nbsp;&nbsp;__&nbsp;___&nbsp;&nbsp;&nbsp;_____&nbsp;_&nbsp;__`,
+`|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;'_&nbsp;\\|&nbsp;'__|&nbsp;/&nbsp;__|&nbsp;&nbsp;\\&nbsp;\\&nbsp;/\\&nbsp;/&nbsp;/&nbsp;_&nbsp;\\/&nbsp;_&nbsp;&nbsp;\\&nbsp;\\&nbsp;/&nbsp;/&nbsp;_&nbsp;\\&nbsp;'__|`,
+`|&nbsp;|___|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;|&nbsp;\\__&nbsp;\\&nbsp;&nbsp;&nbsp;\\&nbsp;V&nbsp;&nbsp;V&nbsp;/&nbsp;&nbsp;__/&nbsp;(_|&nbsp;|\\&nbsp;V&nbsp;/&nbsp;&nbsp;__/&nbsp;|`,
+`&nbsp;\\____|_|&nbsp;|_|_|&nbsp;&nbsp;|_|___/&nbsp;&nbsp;&nbsp;&nbsp;\\_/\\_/&nbsp;\\___|\\__,_|&nbsp;\\_/&nbsp;\\___|_|`,
+    'Software Developer',
+    'Crewe, UK',
+    '&nbsp;',
+    'Welcome to chrisweaver1.github.io',
+    'Feel free to take a look around',
+    '&nbsp;',
+    'Type \'help\' for a list of commands'
+]
+
+
+elements = $('#terminal-elements')
+dir = '~'
+c = 0
+
+function print(lnarray) {
+    for(let i = 0; i<= lnarray.length; i++)
+    {
+        println(lnarray[i]);
+    }
+
+    newInput()
+}
+
+function println(line) {
+    let ele = elements.children('#line').clone()
+    ele.html(line)
+    $('#terminal').append(ele)
+}
+
+function newInput() {
+    c++
+    let ele = elements.children('#input').clone()
+    ele.append(`chris@chrisweaver1.github.io:${cursor.path} $&nbsp;`)
+    let inp = $('<input>', {
+        type: 'text',
+        id: `term-input-${c}`,
+        name: `term-input-${c}`,
+        value: '',
+    })
+    inp.keypress((e) => { 
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            submit()  
+        }
+    })
+    inp.addClass('term-input')
+    ele.append(inp)
+    let form = $('#terminal')
+    form.append(ele)
+    inp.focus();
+}
+
+function parseCommand(val) {
+    let c = {
+        commands: [],
+        flags: []
+    }
+
+    let v = val.split(' ')
+    for(let i = 0; i < v.length; i++) {
+        if (v[i].startsWith('-')) {
+            c.flags.push(v[i].split('-').join(''))
+        } else {
+            c.commands.push(v[i])
+        }
+    }
+    return c
+}
+
+function submit() {
+    let val = $(`#term-input-${c}`).val()
+    let query = parseCommand(val);
+    switch(query.commands[0]) {
+        case undefined:
+            print([''])
+            break
+        case '':
+            print([''])
+            break
+        case 'help':
+            commands.help.method(query)
+            break
+        case 'ls':
+            commands.ls.method(query)
+            break
+        case 'cd':
+            commands.cd.method(query)
+            break
+        default:
+            print([`${query.commands[0]}: command not found`])
+            break
+    }
+}
+
+cursor = {}
+
+directories = {   
+    name:'/',
+    type: 'dir',
+    path: '/',
+    parent:'/',
+    children:{
+        'bin': { 
+            name:'bin',
+            path:'/bin', 
+            type:'dir',
+            parent: '/',
+            children: {}
+        }, 
+        'lib': { 
+            name:'lib',
+            path:'/lib',
+            type:'dir',
+            parent: '/',
+            children: {}
+        }, 
+        'home': { 
+            name:'home',
+            path:'/home',
+            type:'dir',
+            parent: '/',
+            children: {
+                'chris': {
+                    name: 'chris',
+                    path: '~',
+                    type: 'dir',
+                    parent: '/home',
+                    children: {
+                        'projects': {
+                            name: 'projects',
+                            path: '~/projects',
+                            type: 'dir',
+                            parent: '/home/chris',
+                            children: {}
+                        },
+                        'about-me.sh': {
+                            name: 'about-me.sh',
+                            path: '~/about-me.sh',
+                            type: 'script',
+                            parent: '/home/script'
+                        }
+                    }
+                }                    
+            }
+        },  
+        'etc': { 
+            name:'etc',
+            path:'/etc',
+            type:'dir',
+            parent: '/',
+            children: {}
+        }, 
+    }
+}
+
+function cd(path, p = true) {
+    let res = '';
+    if (!path) {
+        path = '/home/chris'
+    }
+
+    if (path.startsWith('/') || path.startsWith('~')) {
+        res = cdAbsolute(path)
+    } else {
+        res = cdRelative(path)
+    }
+    if (p) print([res])
+}
+
+function cdBase(path, cur) {
+    if (path == '/') {
+        return {err:'', cursor:directories};
+    }
+    if (path.startsWith('~')) {
+        path = path.replace('~', '/home/chris')
+    }
+    let p = path.split('/');
+    let tmpCursor = cur;
+    for(let i = 0; i< p.length; i++) {
+        if (!p[i]) continue
+        tmpCursor.children['..'] = cdBase(tmpCursor.parent, directories).cursor
+        tmpCursor.children['.'] = cdBase(tmpCursor.path, directories).cursor
+        let match = tmpCursor.children[p[i]];
+        if (match == undefined) return {err:`No such file or directory`, cursor:undefined};
+        if (match.type != 'dir') return {err:`cd: ${p[i]}: Not a directory`, cursor:undefined};
+        tmpCursor = match;
+    }
+    return {err:'', cursor:tmpCursor};
+}
+
+function cdRelative(path) {
+    let res = cdBase(path, cursor)
+    if (res.cursor) cursor = res.cursor
+    return res.err
+}
+
+function cdAbsolute(path) {
+    let res = cdBase(path, directories)
+    if (res.cursor) cursor = res.cursor
+    return res.err
+}
+
+commands = {
+    help: {
+        method: (c) => {
+            let help = [
+                'help [name]',
+                'ls [-al]',
+                'cd [dir]'
+            ]
+            print(help)
+        }
+    },
+    ls: {
+        method: (c) => {
+            let list = []
+            let keys = Object.keys(cursor.children)
+            for(let i = 0; i < keys.length; i++) {
+                list.push(cursor.children[keys[i]].name)
+            }
+            print([list.join('&nbsp;&nbsp;')])
+        }
+    },
+    cd: {
+        method: (c) => {
+            cd(c.commands[1])
+        }
+    }
+}
+
+cd('/home/chris', false)
+$( document ).ready(() => {
+    print(motd);
+})
+
+</script>

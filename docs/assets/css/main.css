@@ -1,0 +1,141 @@
+/* 
+    primary f2a780
+    primary highligh 972c4e
+    secondary 615a56de
+    light efede6
+    dark 343a40
+    dark secondary 233345
+*/
+
+body {
+  height: 100%;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.nav-link {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    color: #efede6 !important;
+}
+
+.nav-item {
+    font-size: medium !important;
+}
+
+.nav-link:hover {
+    color: #db9a37 !important;
+}
+
+.navbar {
+    border-top: 2px solid #db9a37;
+    border-bottom: 1px solid #233345;
+}
+
+.active {
+    border-bottom: 3px solid #db9a37;
+}
+
+.site {
+    max-width: 55%;
+    margin: auto;
+    width: 100%;
+}
+
+@media (max-width: 1280px) {
+    .site {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 992px) {
+    .site {
+        max-width: 97%;
+    }
+}
+
+@media (max-width: 768px) {
+    .site {
+        max-width: 97%;
+    }
+}
+
+
+a {
+    color: #db9a37 !important;
+}
+
+a:hover {
+    color:#ae7a2d !important;
+}
+
+body {
+    font-family: Tahoma, Geneva, sans-serif !important;
+    background-color: #343a40;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+.main-bg-dark {
+    background-color: #343a40;
+    color: #efede6;
+}
+
+.main-bg-darker {
+    background-color: #24282c;
+    color: #efede6;
+}
+
+
+.main-bg-light {
+    background-color: #EFEDE6;
+    color: #343a40;
+}
+
+.highlight {
+    color: #7caec5de !important;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-image: url("/assets/images/bg-2-1080.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer {
+    bottom: 0;
+}
+
+.main-text-light {
+    color: #EFEDE6 !important;
+}
+
+.main-text-dark {
+    color: #0f1d2c !important;
+}
+
+.main-card {
+    border: 0px !important;
+    border-left: 4px solid #b8b6af !important;
+    background-color: transparent !important;
+    border-radius: 0;
+}
+
+.header-text {
+    font-weight: bolder;
+    text-shadow: 1px 1px #db9a37;
+}
+
+.badge-secondary {
+    background-color: #ae7a2d !important;
+}
