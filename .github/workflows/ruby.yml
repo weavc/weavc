@@ -5,12 +5,12 @@ on:
     branches:
     - 'master'
     paths: 
-      - './docs/'
+      - 'docs'
   pull_request:
     branches:
     - '*'
     paths: 
-      - './docs/'
+      - 'docs'
 
 defaults:
   run:
