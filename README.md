@@ -34,7 +34,7 @@ I enjoy playing with all sorts of tech and learning new stuff.
 
 ### Links
 
-- [:page_with_curl: https://blog.weav.ovh/](https://blog.weav.ovh/)
+- [:page_with_curl: https://blog.weav.ovh/](https://www.weav.ovh/)
 - [:blue_book: https://www.linkedin.com/in/chrisweaver2/](https://www.linkedin.com/in/chrisweaver2/)
 - [:envelope: chrisweaver1@pm.me](mailto:chrisweaver1@pm.me)
 
