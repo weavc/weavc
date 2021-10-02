@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
-  "version": "1.0.0",
-  "description": "My webpack project",
+  "name": "cv",
+  "version": "0.0.0",
+  "description": "",
   "private": true,
   "scripts": {
     "build": "run-s build:{webpack,jekyll}",
@@ -11,8 +11,8 @@
     "build:webpack:prod": "webpack --mode=production --node-env=production",
     "start": "run-p start:{webpack,jekyll}",
     "start:jekyll": "bundle exec jekyll serve",
-    "start:webpack": "webpack --mode=development --watch"
-
+    "start:webpack": "webpack --mode=development --watch",
+    "preinstall": "bundle install"
   },
   "repository": {
     "type": "git",
