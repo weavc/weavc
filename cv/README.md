@@ -1,6 +1,5 @@
 ## Todo
 
-- [ ] HTML Templating using pug or similar
+- [x] HTML Templating using pug or similar
+- [x] Pages and navigation with 'raw' views for printing
 - [ ] Covering Letter template
-- [ ] CI builds with nginx hosting
-- [ ] Pages and navigation with 'raw' views for printing
