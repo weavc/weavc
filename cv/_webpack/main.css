@@ -1,0 +1,13 @@
+
+body {
+    font-family: Tahoma, Geneva, sans-serif !important; 
+    font-size: 13px;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}
+
+ .text-highlight {
+    color: #5B5EA6;
+}

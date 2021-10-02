@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="title" content="{{ page.title }}">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Chris Weaver - CV</title>
+        <script src="/assets/bundle/bundle.js"></script>
+
+    </head>
+
+    <body class="d-flex flex-column">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg bg-dark sticky-top flex-nowrap flex-row">
+            <div class="" style="white-space: nowrap;">
+                <ul class="navbar-nav flex-row">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn btn-sm btn-primary text-white px-2" target="_blank" href="/print/{{page.print}}">Print Page</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Site wrapper -->
+        <div class="container">
+            <div class="card main-card my-4">
+                <div class="card-body">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
+

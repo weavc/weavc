@@ -4,12 +4,15 @@
   "description": "My webpack project",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "start": "webpack-cli serve",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "build": "run-s build:{webpack,jekyll}",
+    "build:jekyll": "bundle exec jekyll build",
+    "build:webpack": "webpack --mode=production --node-env=production",
+    "build:webpack:dev": "webpack --mode=development",
+    "build:webpack:prod": "webpack --mode=production --node-env=production",
+    "start": "run-p start:{webpack,jekyll}",
+    "start:jekyll": "bundle exec jekyll serve",
+    "start:webpack": "webpack --mode=development --watch"
+
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "html-webpack-plugin": "^5.3.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
     "style-loader": "^3.3.0",
     "webpack": "^5.55.1",

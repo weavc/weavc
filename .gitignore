@@ -1,3 +1,6 @@
 _site/
 dist/
 node_modules/
+**/bundle/*
+
+!.keep
