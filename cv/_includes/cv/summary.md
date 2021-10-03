@@ -1,3 +1,3 @@
-4+ years experience in Software development and a background in ethical hacking. Specializing in backend development but passionate to continue developing my skills in DevOps, infrastructure and security. Currently working at SGWorld Ltd as a software developer, using a variety of tech including .NET, Angular, Microsoft SQL, MongoDB and Azure.
+4+ years experience in software development and a background in ethical hacking. Specializing in backend development but passionate to continue developing my skills in DevOps, infrastructure, and security.
 
-Enjoying working with Pop!_OS and VSCode, automating setups with Ansible and Docker, and playing through different rooms on TryHackMe and HackTheBox. Always keen to learn new programming languages and tools when the need arises.
+Currently working as a full-stack software developer, using a variety of tech including .NET, Azure, Angular, Microsoft SQL, and MongoDB. Enjoying using Pop!_OS, VSCode, automating setups using Ansible and Docker, and playing through rooms on TryHackMe in my free time. Always keen to learn new programming languages and tools when the need arises.
