@@ -2,7 +2,7 @@
 layout: md
 title: ngx-youtube-embed
 repo: chrisweaver1/ngx-youtube-embed
-description: Component for embeding Youtube videos into Angular projects
+description: NPM package for embedding & configuring Youtube videos in an Angular website.
 tags: ['angular', 'npm', 'html', 'typescript']
 sort_key: 2
 ---

@@ -2,7 +2,7 @@
 layout: md
 title: Yew
 repo: weavc/yew
-description: Lightweight plugin manager for Go. Implement and communicate with go plugins
+description: Lightweight plugin manager for Go.
 tags: ['go', 'plugins', 'events']
 sort_key: 1
 pinned: true

@@ -14,18 +14,16 @@
                 <div class="col-12 mb-2 px-1">
                     <div class="card bg-darker h-100">
                         <div class="card-body">
-                            <h5 class="card-title"><b>{{p.title}}</b></h5>
+                            <h5 class="card-title border-bottom border-1 pb-2 mb-2"><b>{{p.title}}</b></h5>
                             <p class="card-text">
                                 {{p.description}}
                                 <br />
                                 <br />
-                                {% for tag in p.tags %}<span class="badge badge-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
+                                {% for tag in p.tags %}<span class="badge bg-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
                             </p>
                         </div>
-                        <div class="card-footer text-muted">
-                            <a class="d-inline float-right" href="https://github.com/{{p.repo}}">
-                                <img src="https://img.shields.io/static/v1?label=&message={{p.repo}}&color=blue&style=flat-square&logo=Github" alt="Github">
-                            </a>
+                        <div class="card-footer text-muted text-end">
+                            {% include github-badge.html repo=p.repo %}
                         </div>
                     </div>
                 </div>
