@@ -13,7 +13,6 @@ sort_key: 1
 - [tools](tools)
 - [linux](linux)
 - [security](security)
-- [tryhackme](tryhackme)
 - [docker](docker)
 
 #### Posts

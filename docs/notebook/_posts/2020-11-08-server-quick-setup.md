@@ -9,8 +9,10 @@ sort_key: 1
 
 {% include project-headers.html %}
 
+Update - I've moved to using ansible to do this now. Updated post coming soon.
+
 #### Script
-`bash -c "$(curl -fsSL https://blog.weav.ovh/assets/files/setup.sh)"`
+`bash -c "$(curl -fsSL https:/www.weav.ovh/assets/files/setup.sh)"`
 
 ```
 sudo apt-get update

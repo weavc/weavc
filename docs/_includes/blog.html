@@ -12,14 +12,14 @@
                 {% assign items = site.posts %}
                 {%- for p in items %}
                 <div class="col-12 mb-2 px-1">
-                    <div class="card main-bg-dark h-100">
+                    <div class="card bg-darker h-100">
                         <div class="card-body">
                             <h5 class="card-title">{{p.title}}</h5>
                             <p class="card-text">
                                 {{p.description}}
                                 <br />
                                 <br />
-                                {% for tag in p.tags %}<span class="badge badge-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
+                                {% for tag in p.tags %}<span class="badge bg-lighter">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
                             </p>
                         </div>
                         <div class="card-footer text-muted">

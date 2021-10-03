@@ -27,9 +27,9 @@ body {
     font-size: medium !important;
 }
 
-.nav-link:hover {
+/* .nav-link:hover {
     color: #db9a37 !important;
-}
+} */
 
 .navbar {
     border-top: 2px solid #db9a37;
@@ -65,13 +65,13 @@ body {
 }
 
 
-a {
+/* a {
     color: #db9a37 !important;
 }
 
 a:hover {
     color:#ae7a2d !important;
-}
+} */
 
 body {
     font-family: Tahoma, Geneva, sans-serif !important;
@@ -81,22 +81,6 @@ body {
 
 html {
     height: 100%;
-}
-
-.main-bg-dark {
-    background-color: #343a40;
-    color: #efede6;
-}
-
-.main-bg-darker {
-    background-color: #24282c;
-    color: #efede6;
-}
-
-
-.main-bg-light {
-    background-color: #EFEDE6;
-    color: #343a40;
 }
 
 .highlight {
@@ -136,6 +120,6 @@ html {
     text-shadow: 1px 1px #db9a37;
 }
 
-.badge-secondary {
+/* .badge-secondary {
     background-color: #ae7a2d !important;
-}
+} */

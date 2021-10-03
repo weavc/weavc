@@ -5,6 +5,7 @@ exclude:
 - Gemfile
 - Gemfile.lock
 - nginx.conf
+- node_modules/
 permalink: /:categories/:year-:month-:day-:title.html
 collections:
     projects:

@@ -18,7 +18,7 @@ p, ul, li, td, th {
 pre.highlight {
     /* background-color:rgba(255, 255, 255, 0.7); */
     border: 0px !important;
-    border-left: 3px solid #db9a37 !important;
+    border-left: 3px solid #b8b6af !important;
     border-radius: 0;
     padding-right: 20px;
     padding-left: 20px;
@@ -27,7 +27,7 @@ pre.highlight {
 }
 
 code {
-    color:#db9a37;
+    color:#b8b6af;
 }
 
 table {
