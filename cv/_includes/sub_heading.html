@@ -1,0 +1,17 @@
+<div class="flex-container mb-2">
+    <div class="row">
+        <div class="col-8">
+            <h6 class="d-inline"><b>{{ include.text }}</b></h6>
+        </div>
+        <div class="col-4">
+            <small class="clearfix text-highlight text-end d-block"><b>{{ include.end }}</b></small>
+        </div>
+    </div>
+    {% if include.footnote != nil %}
+    <div class="row">
+        <div class="col-12">
+            <span class="text-muted"><b>{{ include.footnote }}</b></span>
+        </div>
+    </div>
+    {% endif %}
+</div>

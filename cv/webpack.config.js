@@ -1,25 +1,26 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+//const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = "style-loader";
 
 const config = {
-  entry: "./index.js",
+  entry: "./_webpack/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "assets/bundle"),
+    filename: 'bundle.js',
   },
   devServer: {
     open: true,
     host: "localhost",
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "index.html",
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: "index.html",
+    // }),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
