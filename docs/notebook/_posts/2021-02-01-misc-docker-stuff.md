@@ -3,7 +3,7 @@ layout: md
 title: Misc docker stuff
 description: 'Random docker commands that occasionally come in handy'
 tags: ['docker']
-categories: ['docker']
+terms: ['docker']
 sort_key: 0
 ---
 

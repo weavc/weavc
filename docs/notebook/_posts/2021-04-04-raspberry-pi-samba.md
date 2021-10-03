@@ -3,7 +3,7 @@ layout: md
 title: Samba share on Raspberry Pi using docker
 description: 'Quick setup for using samba on a Raspberry Pi with docker'
 tags: ['docker', 'raspberry pi', 'samba']
-categories: ['linux', 'docker']
+terms: ['linux', 'docker']
 sort_key: 1
 ---
 

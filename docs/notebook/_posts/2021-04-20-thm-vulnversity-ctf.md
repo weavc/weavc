@@ -3,7 +3,7 @@ layout: md
 title: TryHackMe Vulnversity Room
 description: Vulnversity notes & recap
 tags: ['security', 'tryhackme']
-categories: ['linux', 'security', 'thm']
+terms: ['linux', 'security', 'thm']
 ---
 
 {% include project-headers.html %}

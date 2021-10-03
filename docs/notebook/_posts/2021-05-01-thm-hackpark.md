@@ -3,7 +3,7 @@ layout: md
 title: TryHackMe HackPark room
 description: 
 tags: ['security', 'tryhackme']
-categories: ['linux', 'security', 'thm']
+terms: ['linux', 'security', 'thm']
 ---
 
 {% include project-headers.html %}

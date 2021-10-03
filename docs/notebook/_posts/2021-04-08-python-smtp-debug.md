@@ -3,7 +3,7 @@ layout: md
 title: Python SMTP debugging
 description: Quick script to help debug SMTP issues
 tags: ['python', 'smtp']
-categories: ['python', 'dev', 'tools']
+terms: ['python', 'dev', 'tools']
 ---
 
 {% include project-headers.html %}

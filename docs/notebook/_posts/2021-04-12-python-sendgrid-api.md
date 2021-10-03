@@ -3,7 +3,7 @@ layout: md
 title: Send Email via Sendgrids API
 description: 
 tags: ['python', 'email']
-categories: ['python', 'dev', 'tools']
+terms: ['python', 'dev', 'tools']
 ---
 
 {% include project-headers.html %}

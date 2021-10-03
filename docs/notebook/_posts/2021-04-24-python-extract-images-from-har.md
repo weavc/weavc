@@ -3,7 +3,7 @@ layout: md
 title: Python - Extract images from .har files
 description: Small script to extract images from .har files
 tags: ['python', 'images']
-categories: ['python', 'dev', 'tools']
+terms: ['python', 'dev', 'tools']
 ---
 
 {% include project-headers.html %}

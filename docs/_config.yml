@@ -5,6 +5,7 @@ exclude:
 - Gemfile
 - Gemfile.lock
 - nginx.conf
+permalink: /:categories/:year-:month-:day-:title.html
 collections:
     projects:
         name: projects

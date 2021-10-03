@@ -1,8 +1,8 @@
 ---
 layout: md
-title: chrisweaver1.github.io
-repo: chrisweaver1/chrisweaver1.github.io
-description: Simple, personal website/blog/portfolio built using Jekyll, hosted ny Github Pages
+title: chrisweaver1
+repo: chrisweaver1/chrisweaver1
+description: Simple, personal website/blog/portfolio built using Jekyll, hosted by Github Pages
 tags: ['jekyll', 'ruby', 'html', 'portfolio', 'docker']
 sort_key: 2
 ---

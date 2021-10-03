@@ -6,7 +6,7 @@
         <div class="col-lg-6 col-sm-6 mb-2 px-1">
             <div class="card main-bg-dark h-100">
                 <div class="card-body">
-                    <h5 class="card-title">{{p.title}}</h5>
+                    <h5 class="card-title"><b>{{p.title}}</b></h5>
                     <p class="card-text">
                         {{p.description}}
                         <br />
@@ -15,10 +15,9 @@
                     </p>
                 </div>
                 <div class="card-footer text-muted">
-                    <a class="d-inline float-left" href="https://github.com/{{p.repo}}">
+                    <a class="d-inline float-right" href="https://github.com/{{p.repo}}">
                         <img src="https://img.shields.io/static/v1?label=&message={{p.repo}}&color=blue&style=flat-square&logo=Github" alt="Github">
                     </a>
-                    <a class="float-right" href="{{p.url}}"><small>Read more..&nbsp;<i class="fas fa-link"></i></small></a>
                 </div>
             </div>
         </div>

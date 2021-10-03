@@ -3,7 +3,7 @@ layout: md
 title: TryHackMe Kenobi Room
 description: Notes on tryhackme.com's kenobi challenge
 tags: ['security', 'tryhackme']
-categories: ['linux', 'security', 'thm']
+terms: ['linux', 'security', 'thm']
 ---
 
 {% include project-headers.html %}

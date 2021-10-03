@@ -3,7 +3,7 @@ layout: md
 title: Quick server setup & security
 description: 'Server setup notes & security resources'
 tags: ['linux', 'security']
-categories: ['linux', 'security']
+terms: ['linux', 'security']
 sort_key: 1
 ---
 
