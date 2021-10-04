@@ -1,16 +1,13 @@
 ---
-layout: md
-title: Dotnet Async Events
+layout: post
+title: Async Events Services [.NET] 
 description: 'Async event service'
 terms: ['dotnet', 'dev']
 icon: code-slash
 sort_key: 1
 ---
 
-{% include project-headers.html %}
-
-
-### AsyncEvent.cs
+#### AsyncEvent.cs
 ```c#
 /// <summary>
 /// Async implementation of an Event
@@ -20,7 +17,7 @@ sort_key: 1
 public delegate Task AsyncEvent<TArgs>(object sender, TArgs args);
 ```
 
-### IEventService.cs
+#### IEventService.cs
 ```c#
 /// <summary>
 /// Used to emit events to handler services
@@ -32,7 +29,7 @@ public interface IEventService<TArgs>
 }
 ```
 
-### IEventHandler.cs
+#### IEventHandler.cs
 ```c#
 /// <summary>
 /// Defines an event handler. These should be called by an event service when the event is trigged
@@ -44,7 +41,7 @@ public interface IEventHandler<TArgs>
 }
 ```
 
-### EventServiceBase.cs
+#### EventServiceBase.cs
 ```c#
 /// <summary>
 /// Base implementation of an event service
@@ -80,54 +77,9 @@ public abstract class EventServiceBase<TArgs> : IEventService<TArgs>
 }
 ```
 
-### OnDisposalEventServiceBase.cs
-```c#
-/// <summary>
-/// An extended implementation of BaseEventService. Certain types of events wont be required to 
-/// be emitted to their handlers right away. We can use this implemention to
-/// queue the events and emit them on disposal instead of right away.
-/// </summary>
-/// <typeparam name="TArgs">Type of Payload/args emitted by event</typeparam>
-public abstract class OnDisposalEventServiceBase<TArgs> : EventServiceBase<TArgs>, IAsyncDisposable, IEventService<TArgs>
-{
-    public OnDisposalEventServiceBase(IEnumerable<IEventHandler<TArgs>> events) : base(events)
-    {
-        this.queue = new List<(object sender, TArgs args)>();
-    }
+### Example Implementation
 
-    /// <summary>
-    /// Queue of events to be emitted on disposal of service.
-    /// </summary>
-    protected List<(Object sender, TArgs args)> queue { get; set; } 
-
-
-    /// <summary>
-    /// Add an emit call to the disposal queue
-    /// </summary>
-    public override Task Emit(Object sender, TArgs args)
-    {
-        this.queue.Add((sender, args));
-        return Task.CompletedTask;
-    }
-
-    /// <summary>
-    /// Implementation of async disposal method. Triggers each of the events in the queue.
-    /// </summary>
-    public async ValueTask DisposeAsync()
-    {
-        foreach(var evt in this.queue)
-        {
-            await base.Emit(evt.sender, evt.args);
-        }
-
-        return;
-    }
-}
-```
-
-## Example Implementation
-
-### LoginEvent.cs
+#### LoginEvent.cs
 ```c#
 public class LoginEvent : OnDisposalEventEmitterBase<LoginEventArgs>, IEventService<LoginEventArgs>
 {
@@ -135,7 +87,7 @@ public class LoginEvent : OnDisposalEventEmitterBase<LoginEventArgs>, IEventServ
 }
 ```
 
-### LoginLogEventHandler.cs
+#### LoginLogEventHandler.cs
 ```c#
 public class LoginLogHandler : IEventHandler<LoginEventArgs>
 {

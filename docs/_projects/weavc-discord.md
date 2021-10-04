@@ -8,8 +8,6 @@ sort_key: 2
 pinned: false
 ---
 
-{% include project-headers.html %}
-
 There can be implemented alongside `discord.js` to provide a number of utilities includinga router, argument parser and embed pager. 
 
 #### Router

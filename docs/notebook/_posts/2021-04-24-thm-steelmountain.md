@@ -1,13 +1,11 @@
 ---
-layout: md
-title: TryHackMe Steelmountain room
+layout: post
+title: SteelMountain [TryHackMe]
 description: 
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
 icon: shield-exclamation
 ---
-
-{% include project-headers.html %}
 
 Attacking a Windows based machine.
 

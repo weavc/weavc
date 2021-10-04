@@ -8,8 +8,6 @@ sort_key: 1
 pinned: true
 ---
 
-{% include project-headers.html %}
-
 ![tests](https://github.com/weavc/yew/workflows/Go/badge.svg?branch=master) 
 [![GoDoc](https://img.shields.io/static/v1?label=godoc&message=reference&color=blue)](https://pkg.go.dev/github.com/weavc/yew)
 

@@ -8,8 +8,6 @@ sort_key: 1
 pinned: true
 ---
 
-{% include project-headers.html %}
-
 [![Dotnet Build And Test](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-build-and-test.yml/badge.svg)](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-build-and-test.yml)
 [![Dotnet Publish Package](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-publish-package.yml/badge.svg?event=release)](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-publish-package.yml)
 

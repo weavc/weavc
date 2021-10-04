@@ -7,8 +7,6 @@ tags: ['totp', 'javascript', 'npm', 'typescript', '2fa', 'security']
 sort_key: 2
 ---
 
-{% include project-headers.html %}
-
 [![NPM](https://img.shields.io/static/v1?label=NPM&message={{page.repo}}&color=red&logo=npm)](https://nodei.co/npm/weav-totp/)
 ![Node CI](https://github.com/ChrisWeaver1/weav-totp/workflows/Node%20CI/badge.svg?branch=master)
 

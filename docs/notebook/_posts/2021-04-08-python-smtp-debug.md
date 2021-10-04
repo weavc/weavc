@@ -1,13 +1,11 @@
 ---
-layout: md
-title: Python SMTP debugging
+layout: post
+title: SMTP Debug Tool [Python]
 description: Quick script to help debug SMTP issues
 tags: ['python', 'smtp']
 terms: ['python', 'dev', 'tools']
 icon: tools
 ---
-
-{% include project-headers.html %}
 
 ```python
 import smtplib, ssl

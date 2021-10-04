@@ -7,8 +7,6 @@ tags: ['angular', 'npm', 'html', 'typescript']
 sort_key: 2
 ---
 
-{% include project-headers.html %}
-
 [![npm version](https://badge.fury.io/js/ngx-youtube-embed.svg)](https://badge.fury.io/js/ngx-youtube-embed)
 ![npm publish](https://github.com/ChrisWeaver1/ngx-youtube-embed/workflows/npm%20publish/badge.svg?branch=master&event=release)
 ![node build and test](https://github.com/ChrisWeaver1/ngx-youtube-embed/workflows/node%20build%20and%20test/badge.svg)

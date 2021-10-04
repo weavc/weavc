@@ -1,4 +1,5 @@
 @import "custom";
+@import "code";
 @import "~bootstrap/scss/bootstrap";
 
 
@@ -64,6 +65,10 @@ a:hover {
 }
 
 code {
+    color: $green-200;
+}
+
+.code {
     color: $green-200;
 }
 
