@@ -4,6 +4,7 @@ title: TryHackMe Vulnversity Room
 description: Vulnversity notes & recap
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
+icon: shield-exclamation
 ---
 
 {% include project-headers.html %}

@@ -4,6 +4,7 @@ title: Samba share on Raspberry Pi using docker
 description: 'Quick setup for using samba on a Raspberry Pi with docker'
 tags: ['docker', 'raspberry pi', 'samba']
 terms: ['linux', 'docker']
+icon: hdd-network
 sort_key: 1
 ---
 

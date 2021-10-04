@@ -4,6 +4,7 @@ title: Quick server setup & security
 description: 'Server setup notes & security resources'
 tags: ['linux', 'security']
 terms: ['linux', 'security']
+icon: hdd-rack
 sort_key: 1
 ---
 

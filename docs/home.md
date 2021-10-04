@@ -6,7 +6,7 @@ title: Home
 
 ---
 
-#### About me
+#### <i class="bi bi-card-text"></i> &nbsp;About me
 
 Software developer with a background in ethical hacking and security.
 
@@ -16,12 +16,12 @@ I enjoy playing with all sorts of tech and learning new stuff. Feel free to chec
 
 ---
 
-#### Lanuages and Tools
+#### <i class="bi bi-journal-code"></i> Languages and Tools
 
 {% include skills.html %}
 
 ---
 
-#### Pinned Projects
+#### <i class="bi bi-pin"></i> Projects
 
 {% include pins.html %}

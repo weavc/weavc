@@ -4,6 +4,7 @@ title: TryHackMe Kenobi Room
 description: Notes on tryhackme.com's kenobi challenge
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
+icon: shield-exclamation
 ---
 
 {% include project-headers.html %}

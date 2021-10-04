@@ -3,6 +3,7 @@ layout: md
 title: Dotnet Async Events
 description: 'Async event service'
 terms: ['dotnet', 'dev']
+icon: code-slash
 sort_key: 1
 ---
 

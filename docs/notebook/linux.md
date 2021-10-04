@@ -10,4 +10,4 @@ filter: 'linux'
 
 #### Posts
 
-{% include notebook.html %}
+{% include posts.html %}

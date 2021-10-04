@@ -89,11 +89,7 @@ html {
 }
 
 .header {
-  background-image: url("/assets/images/bg-2-1080.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    height: 100%;
 }
 
 .footer {

@@ -4,6 +4,7 @@ title: Send Email via Sendgrids API
 description: 
 tags: ['python', 'email']
 terms: ['python', 'dev', 'tools']
+icon: tools
 ---
 
 {% include project-headers.html %}

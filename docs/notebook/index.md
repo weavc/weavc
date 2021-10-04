@@ -7,14 +7,10 @@ sort_key: 1
 
 {% include project-headers.html %}
 
-#### Contents
+#### Categories
 
-- [dev](dev)
-- [tools](tools)
-- [linux](linux)
-- [security](security)
-- [docker](docker)
+{% include notebook-links.html %}
 
 #### Posts
 
-{% include notebook.html %}
+{% include posts.html %}

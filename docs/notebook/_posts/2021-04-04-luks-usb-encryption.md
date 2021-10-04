@@ -4,6 +4,7 @@ title: Luks / Cryptsetup encrypted USB
 description: ''
 tags: ['linux', 'cryptography']
 terms: ['linux', 'security']
+icon: file-lock
 sort_key: 1
 ---
 

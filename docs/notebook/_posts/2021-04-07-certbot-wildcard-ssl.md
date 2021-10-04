@@ -5,6 +5,7 @@ description: 'Generating wildcare SSL with certbot & ovh dns'
 sort_key: 1
 tags: ['misc', 'security', 'tls']
 terms: ['security', 'linux']
+icon: shield-lock
 ---
 
 {% include project-headers.html %}

@@ -10,5 +10,5 @@ filter: 'docker'
 
 #### Posts
 
-{% include notebook.html %}
+{% include posts.html %}
 

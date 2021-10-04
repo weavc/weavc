@@ -10,4 +10,4 @@ filter: 'thm'
 
 #### Posts
 
-{% include notebook.html %}
+{% include posts.html %}

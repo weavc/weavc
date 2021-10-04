@@ -13,6 +13,15 @@ body {
     background-color: $gray-800 !important;
 }
 
+.highlight-lighter:hover {
+    background-color: $gray-700 !important;
+}
+
+.highlight-darker:hover {
+    background-color: $gray-900 !important;
+}
+
+
 .bg-lighter {
     background-color: $gray-700;
     color: $gray-100;
@@ -59,7 +68,25 @@ code {
 }
 
 .content {
-    max-width: 90%;
+    max-width: 70%;
     margin: auto;
     width: 100%;
+}
+
+@media (max-width: 1280px) {
+    .content {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 992px) {
+    .content {
+        max-width: 97%;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        max-width: 97%;
+    }
 }

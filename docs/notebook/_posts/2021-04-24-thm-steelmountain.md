@@ -4,6 +4,7 @@ title: TryHackMe Steelmountain room
 description: 
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
+icon: shield-exclamation
 ---
 
 {% include project-headers.html %}

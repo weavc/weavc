@@ -4,6 +4,7 @@ title: Python SMTP debugging
 description: Quick script to help debug SMTP issues
 tags: ['python', 'smtp']
 terms: ['python', 'dev', 'tools']
+icon: tools
 ---
 
 {% include project-headers.html %}

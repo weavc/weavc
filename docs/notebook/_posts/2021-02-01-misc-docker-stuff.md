@@ -4,6 +4,7 @@ title: Misc docker stuff
 description: 'Random docker commands that occasionally come in handy'
 tags: ['docker']
 terms: ['docker']
+icon: diagram-2
 sort_key: 0
 ---
 
