@@ -1,12 +1,11 @@
 ---
-layout: md
-title: TryHackMe HackPark room
+layout: post
+title: HackPark [TryHackMe]
 description: 
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
+icon: shield-exclamation
 ---
-
-{% include project-headers.html %}
 
 Includes:
   - Windows

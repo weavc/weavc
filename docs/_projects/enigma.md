@@ -1,14 +1,12 @@
 ---
-layout: md
+layout: post
 title: M3 Enigma Emulator
 repo: weavc/enigma
-description: Python based M3 Enigma emulator with a flask frontend
+description: WW2 M3 Enigma machine emulator with a flask frontend, written in Python.
 tags: ['python', 'flask', 'cryptography', 'enigma', 'docker']
 sort_key: 1
 pinned: true
 ---
-
-{% include project-headers.html %}
 
 ![Python tests](https://github.com/weavc/enigma/workflows/Python%20tests/badge.svg)
 [![Docker](https://img.shields.io/badge/docker-releases-blue?logo=docker)](https://github.com/weavc/enigma/packages?ecosystem=docker)
@@ -36,12 +34,3 @@ There are a number of revisions of Enigma, this repository only implements the `
 - https://en.wikipedia.org/wiki/Enigma_rotor_details
 - http://summersidemakerspace.ca/projects/enigma-machine/
 - https://en.wikipedia.org/wiki/Enigma_machine
-
-<!--- 
-### Embeded demo 
-
-[https://enigma.weav.ovh](https://enigma.weav.ovh)
-
-{% include enigma-iframe.html %}
--->
-

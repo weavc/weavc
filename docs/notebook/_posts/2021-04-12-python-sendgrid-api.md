@@ -1,12 +1,11 @@
 ---
-layout: md
-title: Send Email via Sendgrids API
+layout: post
+title: Sendgrid API Debugging [Python]
 description: 
 tags: ['python', 'email']
 terms: ['python', 'dev', 'tools']
+icon: tools
 ---
-
-{% include project-headers.html %}
 
 Quick send email api request for sendgrid, helps deugging models and requests etc. For actual sendgrid use, use [Sendgrids python client](https://github.com/sendgrid/sendgrid-python).
 

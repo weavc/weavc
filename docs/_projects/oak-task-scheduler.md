@@ -2,13 +2,11 @@
 layout: md
 title: Oak.TaskScheduler
 repo: weavc/Oak.TaskScheduler
-description: Dotnet library for creating & hosting a task scheduler
-tags: ['dotnet', 'tasks', 'cron', 'scheduler']
+description: Task scheduler .NET library. Includes helpers to setup and schedule tasks, and built with dependency injection in mind.
+tags: ['dotnet', 'tasks', 'cron', 'scheduler', 'nuget']
 sort_key: 1
 pinned: true
 ---
-
-{% include project-headers.html %}
 
 [![Dotnet Build And Test](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-build-and-test.yml/badge.svg)](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-build-and-test.yml)
 [![Dotnet Publish Package](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-publish-package.yml/badge.svg?event=release)](https://github.com/weavc/Oak.TaskScheduler/actions/workflows/dotnet-publish-package.yml)

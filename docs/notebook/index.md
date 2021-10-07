@@ -1,21 +1,14 @@
 ---
-layout: md
+layout: post
 title: Notebook
 description: 'Personal notebook for day-to-day dev things'
 sort_key: 1
 ---
 
-{% include project-headers.html %}
+#### Categories
 
-#### Contents
-
-- [dev](dev)
-- [tools](tools)
-- [linux](linux)
-- [security](security)
-- [tryhackme](tryhackme)
-- [docker](docker)
+{% include notebook-links.html %}
 
 #### Posts
 
-{% include notebook.html %}
+{% include posts.html %}

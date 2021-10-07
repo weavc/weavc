@@ -11,47 +11,43 @@
 
         <title>Chris Weaver - {{ page.title }}</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="/assets/fa/css/all.min.css"/>
-        <link rel="stylesheet" href="/assets/css/main.css"/>
-        <link rel="stylesheet" href="/assets/css/markdown.css"/>
-        
+        <script src="/assets/js/bundle.js"></script>
 
     </head>
 
-    <body class="main-bg-dark d-flex flex-column">
+    <body class="bg-3 d-flex flex-column">
 
         <!-- Header -->
         {% include header.html %}
 
         <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg main-bg-darker sticky-top flex-nowrap flex-row">
+        <nav class="navbar navbar-expand-lg bg-3 sticky-top flex-nowrap flex-row">
             <div class="mx-auto" style="white-space: nowrap;">
                 <ul class="navbar-nav flex-row">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/">Home</a>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link p-0" href="/"><b>&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</b></a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/projects">Projects</a>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link p-0" href="/projects"><b>&nbsp;Projects&nbsp;</b></a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/notebook">Notebook</a>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link p-0" href="/notebook"><b>&nbsp;Notebook&nbsp;</b></a>
                     </li>
                 </ul>
             </div>
         </nav>
 
         <!-- Site wrapper -->
-        <div class="site">
-            <div class="card main-card my-4">
-                <div class="card-body main-bg-darker">
+        <div class="content">
+            <div class="card my-4 border-1 bg-2">
+                <div class="card-body">
                     {{ content }}
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-        <footer id="sticky-footer" class="footer main-bg-darker text-white-50 py-1">
+        <footer id="sticky-footer" class="footer bg-2 text-white-50 py-1">
             {% include footer-links.html %}
         </footer>
     </body>

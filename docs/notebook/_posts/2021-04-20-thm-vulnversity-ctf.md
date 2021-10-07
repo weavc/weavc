@@ -1,12 +1,11 @@
 ---
-layout: md
-title: TryHackMe Vulnversity Room
+layout: post
+title: Vulnversity [TryHackMe]
 description: Vulnversity notes & recap
 tags: ['security', 'tryhackme']
 terms: ['linux', 'security', 'thm']
+icon: shield-exclamation
 ---
-
-{% include project-headers.html %}
 
 [TryHackMe ~ Vulnversity](https://tryhackme.com/room/vulnversity)
 

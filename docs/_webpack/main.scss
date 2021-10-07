@@ -1,0 +1,125 @@
+@import "custom";
+@import "code";
+@import "~bootstrap/scss/bootstrap";
+
+
+body { 
+    font-family: Tahoma, Geneva, sans-serif !important;
+    font-size: 14px;
+    background-color: $gray-700;
+    height: 100%;
+}
+
+tr {
+    border-color: $gray-400 !important;
+}
+
+
+.highlight-1:hover {
+    background-color: $gray-700 !important;
+}
+
+.highlight-2:hover {
+    background-color: $gray-800 !important;
+}
+
+.highlight-3:hover {
+    background-color: $gray-900 !important;
+}
+
+.highlight-secondary:hover {
+    background-color: darken($secondary, 10%) !important;
+}
+
+.highlight-secondary:hover {
+    background-color: darken($secondary, 10%) !important;
+}
+
+.highlight-success:hover {
+    background-color: darken($success, 10%) !important;
+}
+
+.bg-1 {
+    background-color: $gray-700;
+    color: $gray-100;
+    border-color: $gray-900;
+}
+
+.bg-2 {
+    background-color: $gray-800 !important;
+    color: $gray-100 !important;
+    border-color: $gray-700;
+}
+
+.bg-3 {
+    background-color: $gray-900;
+    color: $gray-100;
+    border-color: $gray-700;
+}
+
+.text-muted {
+    color: $gray-400 !important;
+}
+
+#sticky-footer {
+    flex-shrink: none;
+}
+
+.nav-link {
+    color: $primary;
+}
+
+.nav-link:hover {
+    color:lighten($primary, 20%);
+}
+
+.navbar {
+    border-top: 1px solid $gray-700;
+    border-bottom: 1px solid $gray-700;
+}
+
+table {
+    @extend .table;
+    @extend .text-light;
+}
+
+a {
+    color: $primary;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color:lighten($primary, 20%);
+}
+
+code {
+    color: $gray-400;
+}
+
+.code {
+    color: $gray-400;
+}
+
+.content {
+    max-width: 70%;
+    margin: auto;
+    width: 100%;
+}
+
+@media (max-width: 1280px) {
+    .content {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 992px) {
+    .content {
+        max-width: 97%;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        max-width: 97%;
+    }
+}

@@ -1,13 +1,12 @@
 ---
-layout: md
-title: Luks / Cryptsetup encrypted USB
+layout: post
+title: Luks / Cryptsetup Encrypted USB
 description: ''
 tags: ['linux', 'cryptography']
 terms: ['linux', 'security']
+icon: file-lock
 sort_key: 1
 ---
-
-{% include project-headers.html %}
 
 #### Picking a cipher, mode, hash and key size
 - Keysize, size does matter here...
