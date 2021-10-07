@@ -1,34 +1,25 @@
 {% include breadcrumbs.html %}
 
-<div class="row px-xs-1 px-sm-1 px-md-2 px-lg-3 px-xl-3">
-    <div class="col-12">
-        <div class="row">
-            <!-- <h3 class="col-12">Projects</h3> -->
-           <hr class="col mb-3" />
-        </div>
-
-        <div class="container-fluid content-row">
-            <div class="row">
-                {% assign items = site.projects | sort: 'sort_key' %}
-                {%- for p in items %}
-                <div class="col-12 mb-2 px-1">
-                    <div class="card bg-darker h-100">
-                        <div class="card-body">
-                            <h5 class="card-title border-bottom border-1 pb-2 mb-2"><b>{{p.title}}</b></h5>
-                            <p class="card-text">
-                                {{p.description}}
-                                <br />
-                                <br />
-                                {% for tag in p.tags %}<span class="badge bg-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
-                            </p>
-                        </div>
-                        <div class="card-footer text-muted text-end">
-                            {% include github-badge.html repo=p.repo %}
-                        </div>
-                    </div>
+<div class="container-fluid content-row">
+    <div class="row">
+        {% assign items = site.projects | sort: 'sort_key' %}
+        {%- for p in items %}
+        <div class="col-12 mb-2 px-1">
+            <div class="card bg-3 h-100">
+                <div class="card-body">
+                    <h5 class="card-title border-bottom border-1 pb-2 mb-2"><b>{{p.title}}</b></h5>
+                    <p class="card-text">
+                        {{p.description}}
+                        <br />
+                        <br />
+                        {% for tag in p.tags %}<span class="badge bg-secondary">{{tag}}</span>{% if forloop.last != true %}&nbsp;{% endif%}{% endfor %}
+                    </p>
                 </div>
-                {% endfor -%}
+                <div class="card-footer text-muted text-end">
+                    {% include github-badge.html repo=p.repo %}
+                </div>
             </div>
         </div>
+        {% endfor -%}
     </div>
 </div>
