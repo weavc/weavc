@@ -1,11 +1,9 @@
-{% include breadcrumbs.html %}
-
 <div class="container-fluid content-row">
     <div class="row">
         {% assign items = site.projects | sort: 'sort_key' %}
         {%- for p in items %}
-        <div class="col-12 mb-2 px-1">
-            <div class="card bg-3 h-100">
+        <div class="col-lg-6 col-sm-12 mb-2 px-1">
+            <div class="card bg-1 h-100">
                 <div class="card-body">
                     <h5 class="card-title border-bottom border-1 pb-2 mb-2"><b>{{p.title}}</b></h5>
                     <p class="card-text">
