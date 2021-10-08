@@ -3,7 +3,7 @@
         <ul class="list-group w-100">
         {% assign items = site.posts %}
         {%- for p in items %}
-        {% if p.categories contains 'notebook' %}
+        {% if p.categories contains 'notes' %}
         {% if p.terms contains page.filter or page.filter == nil %}
         <li class="bg-3 highlight-1 list-group-item d-flex justify-content-between align-items-center">
             <a href="{{p.url}}" class="text-end stretched-link">
