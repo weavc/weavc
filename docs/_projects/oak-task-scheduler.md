@@ -2,7 +2,7 @@
 layout: md
 title: Oak.TaskScheduler
 repo: weavc/Oak.TaskScheduler
-description: Task scheduler .NET library. Includes helpers to setup and schedule tasks, and built with dependency injection in mind.
+description: Task scheduler .NET library. Includes helpers to setup and schedule tasks, built with concurrency & dependency injection in mind.
 tags: ['dotnet', 'tasks', 'cron', 'scheduler', 'nuget']
 sort_key: 1
 pinned: true

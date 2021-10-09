@@ -4,8 +4,7 @@ title: Yew
 repo: weavc/yew
 description: Lightweight plugin manager for Go.
 tags: ['go', 'plugins', 'events']
-sort_key: 1
-pinned: true
+sort_key: 2
 ---
 
 ![tests](https://github.com/weavc/yew/workflows/Go/badge.svg?branch=master) 
