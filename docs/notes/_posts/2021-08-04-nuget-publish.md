@@ -40,6 +40,8 @@ jobs:
     - name: Pack
       run: dotnet pack ./src/Oak.TaskScheduler/Oak.TaskScheduler.csproj /property:Version=${{ steps.branch_name.outputs.SOURCE_TAG }} --configuration=Release
     - name: Publish
-      run: dotnet nuget push src/Oak.TaskScheduler/bin/Release/Oak.TaskScheduler.${{ steps.branch_name.outputs.SOURCE_TAG }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: |
+	  	dotnet nuget push src/Oak.TaskScheduler/bin/Release/Oak.TaskScheduler.${{ steps.branch_name.outputs.SOURCE_TAG }}.nupkg \ 
+		--api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 ```
 {% endraw %}

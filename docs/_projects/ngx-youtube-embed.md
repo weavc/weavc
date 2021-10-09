@@ -4,7 +4,7 @@ title: ngx-youtube-embed
 repo: chrisweaver1/ngx-youtube-embed
 description: NPM package for embedding & configuring Youtube videos in an Angular website.
 tags: ['angular', 'npm', 'html', 'typescript']
-sort_key: 2
+sort_key: 4
 ---
 
 [![npm version](https://badge.fury.io/js/ngx-youtube-embed.svg)](https://badge.fury.io/js/ngx-youtube-embed)

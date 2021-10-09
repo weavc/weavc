@@ -8,7 +8,7 @@ icon: hdd-rack
 sort_key: 1
 ---
 
-Update - I've moved to using ansible to do this now. Updated post coming soon.
+{% include alert.html type="warning" text="I've moved to using ansible for this, updated post coming soon." %}
 
 #### Script
 `bash -c "$(curl -fsSL https:/www.weav.ovh/assets/files/setup.sh)"`
