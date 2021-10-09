@@ -6,7 +6,12 @@ terms: ['docker']
 icon: server
 ---
 
-{% include alert.html icon="exclamation-diamond" type="warning" text="This setup works but is somewhat incomplete and not fully tested. These should only be used as direction and not as complete." %}
+{% include alert.html icon="exclamation-diamond" type="1" text="This setup works but is somewhat incomplete and not fully tested. These should only be used as direction and not as complete." %}
+
+As part of `weavc/deploy-examples`, I looked into setting up a PostgreSQL database that would run on Docker swarm with hot swappable replica sets over multiple nodes. 
+
+See full project here:
+{% include github-badge.html repo="weavc/deploy-examples" %}
 
 #### Docker Compose
 
@@ -144,3 +149,9 @@ max_wal_senders = 10
 max_replication_slots = 10
 hot_standby_feedback = on
 ```
+
+#### Resources
+
+- [https://github.com/docker-library/docs/blob/master/postgres/README.md](https://github.com/docker-library/docs/blob/master/postgres/README.md)
+- [https://medium.com/swlh/postgresql-replication-with-docker-c6a904becf77](https://medium.com/swlh/postgresql-replication-with-docker-c6a904becf77)
+- [https://www.postgresql.org/docs/9.1/warm-standby.html#PREPARING-MASTER-FOR-STANDBY](https://www.postgresql.org/docs/9.1/warm-standby.html#PREPARING-MASTER-FOR-STANDBY)

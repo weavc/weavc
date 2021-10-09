@@ -57,6 +57,12 @@ tr {
     border-color: $gray-700;
 }
 
+.alert-1 {
+    background-color: #462424;
+    border-color: darken(#462424, 20%);
+    color: $gray-100;
+}
+
 .text-muted {
     color: $gray-400 !important;
 }
