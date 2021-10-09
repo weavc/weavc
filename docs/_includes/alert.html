@@ -1,3 +1,8 @@
-<div class="alert alert-{{include.type}}" role="alert">
-    {{include.text}}
+<div class="alert alert-{{include.type}} d-flex align-items-center" role="alert">
+    {% if include.icon != nil %}
+    <i class="bi bi-{{include.icon}} flex-shrink-0 me-2 mx-2 fs-3 d-inline"></i>
+    {% endif %}
+    <div class="d-inline align-middle">
+        {{include.text}}
+    </div>
 </div>

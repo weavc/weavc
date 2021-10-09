@@ -6,7 +6,7 @@ terms: ['docker']
 icon: server
 ---
 
-{% include alert.html type="warning" text="This setup works but is somewhat incomplete and not fully tested to be working with hot switching etc. These should only be used as direction and not as complete." %}
+{% include alert.html icon="exclamation-diamond" type="warning" text="This setup works but is somewhat incomplete and not fully tested. These should only be used as direction and not as complete." %}
 
 #### Docker Compose
 
