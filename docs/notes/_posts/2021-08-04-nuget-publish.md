@@ -5,7 +5,7 @@ tags: ['dotnet', 'nuget', 'ci/cd']
 terms: ['dotnet', 'dev']
 icon: code-slash
 ---
-
+{% raw %}
 ```yaml
 name: Dotnet Publish Package
 
@@ -42,3 +42,4 @@ jobs:
     - name: Publish
       run: dotnet nuget push src/Oak.TaskScheduler/bin/Release/Oak.TaskScheduler.${{ steps.branch_name.outputs.SOURCE_TAG }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 ```
+{% endraw %}
