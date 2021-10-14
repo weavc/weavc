@@ -34,12 +34,6 @@ I enjoy playing with all sorts of tech and learning new stuff.
 
 ### Links
 
+- [:envelope: chrisweaver1@pm.me](mailto:chrisweaver1@pm.me)
 - [:page_with_curl: https://www.weav.ovh/](https://www.weav.ovh/)
 - [:blue_book: https://www.linkedin.com/in/chrisweaver2/](https://www.linkedin.com/in/chrisweaver2/)
-- [:envelope: chrisweaver1@pm.me](mailto:chrisweaver1@pm.me)
-
----
-
-![github stats](https://github-readme-stats.vercel.app/api?username=chrisweaver1&count_private=true&theme=great-gatsby&hide_rank=true)
-
----
