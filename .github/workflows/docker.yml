@@ -8,12 +8,14 @@ on:
       - 'docs/**'
   release:
     types: [published]
+  workflow_dispatch:
     
 jobs:
   build:
 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1 
@@ -25,8 +27,8 @@ jobs:
       - name: Build & Publish Web
         uses: docker/build-push-action@v2
         with:
-          context: ./docs
-          file: ./docs/Dockerfile
+          context: docs/
+          file: docs/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/chrisweaver1/blog:latest
