@@ -2,5 +2,7 @@ _site/
 dist/
 node_modules/
 **/bundle/*
+hosts.ini
+*.vault
 
 !.keep
