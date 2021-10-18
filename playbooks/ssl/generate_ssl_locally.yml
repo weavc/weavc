@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  vars_files:
+    - ./vars/ovh_app_credentials.yml
+
+  tasks:
+    - import_tasks: ./tasks/ssl_setup.yml

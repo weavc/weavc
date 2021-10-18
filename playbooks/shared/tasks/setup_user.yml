@@ -1,0 +1,28 @@
+---
+- name: Add user
+  become: true
+  user:
+    name: "{{ user }}"
+    state: present
+    generate_ssh_key: yes
+    append: yes
+    groups:
+      - docker
+      - sudo
+  
+- name: Add sudo rights
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "^{{ user }}"
+    line: "{{ user }} ALL=(ALL) NOPASSWD: ALL"
+    state: present
+    validate: 'visudo -cf %s'
+
+- name: Update SSH authorized keys
+  become: true
+  lineinfile:
+    dest: "/home/{{ user }}/.ssh/authorized_keys"
+    line: "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIIyvvK3MHiUcC8hSSVGtgXiyT+IDeG+4Dm1+i7uLu/ZtAAAABHNzaDo="
+    owner: "{{ user }}"
+    state: present

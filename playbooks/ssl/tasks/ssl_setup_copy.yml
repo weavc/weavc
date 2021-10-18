@@ -1,0 +1,8 @@
+---
+- import_tasks: ./ssl_setup_directories.yml
+
+- name: Copy SSL files
+  become: yes
+  ansible.builtin.copy:
+    src: /opt/certbot/certs/
+    dest: /opt/certbot/certs

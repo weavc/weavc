@@ -1,0 +1,28 @@
+---
+- hosts: all
+
+  vars_prompt:
+    - name: mc_volume
+      prompt: "Enter data volume name or path: "
+      private: no
+      default: mc_data
+
+  tasks:
+    - import_tasks: ../install_docker.yml
+
+    - name: Ensure paper-spigot is running
+      community.docker.docker_container:
+        image: itzg/minecraft-server:latest
+        name: spigot_paper
+        detach: yes
+        env:
+          TYPE: "PAPER"
+          EULA: "TRUE"
+        ports:
+          - "25565:25565"
+        networks:
+          - name: weavc_net
+        volumes:
+          - "{{ mc_volume }}:/data"
+        restart_policy: unless-stopped
+        state: started

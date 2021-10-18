@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://json.schemastore.org/ansible-playbook.json
+---
+- hosts: all
+
+  tasks:
+    - import_tasks: ./tasks/deploy_services.yml

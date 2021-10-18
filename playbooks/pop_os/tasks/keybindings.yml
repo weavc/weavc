@@ -1,0 +1,72 @@
+---
+- name: Read switch to workspace 1 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/switch-to-workspace-1
+  register: switch_1
+  changed_when: false
+
+- name: Read switch to workspace 2 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/switch-to-workspace-2
+  register: switch_2
+  changed_when: false
+
+- name: Read switch to workspace 3 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/switch-to-workspace-3
+  register: switch_3
+  changed_when: false
+
+- name: Read switch to workspace 4 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/switch-to-workspace-4
+  register: switch_4
+  changed_when: false
+
+- name: Read move to workspace 1 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/move-to-workspace-1
+  register: move_1
+  changed_when: false
+
+- name: Read move to workspace 2 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/move-to-workspace-2
+  register: move_2
+  changed_when: false
+
+- name: Read move to workspace 3 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/move-to-workspace-3
+  register: move_3
+  changed_when: false
+
+- name: Read move to workspace 4 keybindings
+  command: dconf read /org/gnome/desktop/wm/keybindings/move-to-workspace-4
+  register: move_4
+  changed_when: false
+
+- name: Switch to workspace 1 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>Home', '<Super>1']"
+  when: switch_1.stdout != "['<Super>Home', '<Super>1']"
+
+- name: Switch to workspace 2 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+  when: switch_2.stdout != "['<Super>2']"
+
+- name: Switch to workspace 3 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+  when: switch_3.stdout != "['<Super>3']"
+
+- name: Switch to workspace 4 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"
+  when: switch_4.stdout != "['<Super>4']"
+
+- name: Move window to workspace 1 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-1 "['<Shift><Super>Home', '<Shift><Super>exclam']"
+  when: move_1.stdout != "['<Shift><Super>Home', '<Shift><Super>exclam']"
+
+- name: Move window to workspace 2 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-2 "['<Shift><Super>quotedbl']"
+  when: move_2.stdout != "['<Shift><Super>quotedbl']"
+
+- name: Move window to workspace 3 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-3 "['<Shift><Super>sterling']"
+  when: move_3.stdout != "['<Shift><Super>sterling']"
+
+- name: Move window to workspace 4 keybindings
+  command: dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-4 "['<Shift><Super>dollar']"
+  when: move_4.stdout != "['<Shift><Super>dollar']"

@@ -1,0 +1,24 @@
+---
+- hosts: all
+
+  vars_prompt:
+    - name: portainer_volume
+      prompt: "Enter portainer data volume name or path: "
+      private: no
+      default: portainer_data
+
+  tasks:
+    - import_tasks: ../install_docker.yml
+
+    - name: Ensure portainer is running
+      community.docker.docker_container:
+        image: portainer/portainer
+        name: portainer        
+        detach: yes
+        networks:
+          - name: weavc_net
+        volumes:
+          - "{{ portainer_data }}:/data"
+          - "/var/run/docker.sock:/var/run/docker.sock"
+        restart_policy: unless-stopped
+        state: started
