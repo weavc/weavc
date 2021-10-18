@@ -1,0 +1,36 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides: ovpn
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start and stop OpenVPN
+# Description: OpenVPN
+### END INIT INFO
+
+path_to_ovpn_files=""
+ovpn_file_to_use=""
+
+exec 1>/var/log/ovpn.service.log 2>&1
+
+case "$1" in
+start)
+echo "Connecting to OpenVPN "
+cd "$path_to_ovpn_files"
+/usr/sbin/openvpn --config "$ovpn_file_to_use" &
+;;
+stop)
+echo "Closing connection to OpenVPN "
+killall openvpn
+;;
+*)
+echo "Usage: /etc/init.d/ovpn {start|stop}"
+exit 1
+;;
+esac
+
+exit 0

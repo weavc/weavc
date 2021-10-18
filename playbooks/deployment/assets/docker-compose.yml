@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+
+  nginx:
+    image: ghcr.io/weavc/weavc-nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    networks: 
+      - web-overlay
+    volumes:
+      - /opt/trunk/sites:/sites
+    # configs: (not available without swarm)
+    #   - source: default.conf
+    #     target: /sites/default.conf
+    #   - source: enigma.subdomain.conf
+    #     target: /sites/enigma.subdomain.conf
+    secrets:
+      - fullchain.pem
+      - privkey.pem
+    restart: unless-stopped
+
+  web:
+    image: ghcr.io/chrisweaver1/blog:latest
+    networks: 
+      - web-overlay
+    restart: unless-stopped
+
+  enigma:
+    image: ghcr.io/weavc/enigma/server:latest
+    networks: 
+      - web-overlay
+    restart: unless-stopped
+
+networks:
+  web-overlay:
+    name: web-overlay
+
+# configs:
+#   default.conf:
+#     file: /opt/trunk/sites/default.conf
+#   enigma.subdomain.conf:
+#     file: /opt/trunk/sites/enigma.subdomain.conf
+
+secrets:
+  fullchain.pem:
+    file: /opt/certbot/certs/live/weav.ovh/fullchain.pem
+  privkey.pem:
+    file: /opt/certbot/certs/live/weav.ovh/privkey.pem

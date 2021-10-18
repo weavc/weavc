@@ -1,0 +1,24 @@
+---
+- name: Install repositories
+  become: true
+  apt_repository:
+    repo: ppa:yubico/stable
+    state: present
+
+- name: Install yubikey packages
+  become: true
+  apt:
+    name: 
+      - yubikey-manager 
+      - libfido2-dev
+    state: present
+    update_cache: yes
+
+- name: Install gpg packages
+  become: true
+  apt:
+    name: 
+      - gnupg 
+      - pcscd 
+      - scdaemon
+    state: present 
