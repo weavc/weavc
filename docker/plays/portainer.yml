@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
 
   vars_prompt:
     - name: portainer_volume
@@ -8,7 +8,7 @@
       default: portainer_data
 
   tasks:
-    - import_tasks: ../install_docker.yml
+    - import_tasks: ../../playbooks/shared/tasks/install_docker.yml
 
     - name: Ensure portainer is running
       community.docker.docker_container:

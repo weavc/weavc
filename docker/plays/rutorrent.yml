@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
 
   vars_prompt:
     - name: config_volume
@@ -16,7 +16,7 @@
       default: rutorrent_data
 
   tasks:
-    - import_tasks: ../install_docker.yml
+    - import_tasks: ../../playbooks/shared/tasks/install_docker.yml
 
     - name: Ensure rutorrent is running
       community.docker.docker_container:

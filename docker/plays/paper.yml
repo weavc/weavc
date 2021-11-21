@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
 
   vars_prompt:
     - name: mc_volume
@@ -8,7 +8,7 @@
       default: mc_data
 
   tasks:
-    - import_tasks: ../install_docker.yml
+    - import_tasks: ../../playbooks/shared/tasks/install_docker.yml
 
     - name: Ensure paper-spigot is running
       community.docker.docker_container:
@@ -20,8 +20,6 @@
           EULA: "TRUE"
         ports:
           - "25565:25565"
-        networks:
-          - name: weavc_net
         volumes:
           - "{{ mc_volume }}:/data"
         restart_policy: unless-stopped
