@@ -1,29 +1,26 @@
-<div class="text-left lh-sm text-dark px-1">
+{% include header.html %}
 
-    {% include header.html %}
+<div class="border-bottom border-2 border-dark-50 my-2"></div>
 
-    <div class="border-bottom border-2 border-dark-50 my-2"></div>
-    
-    <div class="flex-container w-100 px-1 my-3">
-        {% capture summary_include %}{% include cv/summary.md %}{% endcapture %}
-        {{ summary_include | markdownify }}
-    </div>
+<div class="flex-container w-100 px-1 my-3">
+    {% capture summary_include %}{% include cv/summary.md %}{% endcapture %}
+    {{ summary_include | markdownify }}
+</div>
 
-    {% include heading.html text="Skills" icon="bi-journal-code" %}
+{% include heading.html text="Skills" icon="bi-journal-code" %}
 
-    {% include cv/skills.html %}
+{% include cv/skills.html %}
 
-    {% include heading.html text="Experience" icon="bi-briefcase" %}
+{% include heading.html text="Experience" icon="bi-briefcase" %}
 
-    <div class="flex-container w-100 px-1 my-3">
-        {% capture experience_include %}{% include cv/experience.md %}{% endcapture %}
-        {{ experience_include | markdownify }}
-    </div>
+<div class="flex-container w-100 px-1 my-3">
+    {% capture experience_include %}{% include cv/experience.md %}{% endcapture %}
+    {{ experience_include | markdownify }}
+</div>
 
-    {% include heading.html text="Education" icon="bi-layout-text-sidebar-reverse" %}
+{% include heading.html text="Education" icon="bi-layout-text-sidebar-reverse" %}
 
-    <div class="flex-container w-100 px-1 my-3">
-        {% capture education_include %}{% include cv/education.md %}{% endcapture %}
-        {{ education_include | markdownify }}
-    </div>
+<div class="flex-container w-100 px-1 my-3">
+    {% capture education_include %}{% include cv/education.md %}{% endcapture %}
+    {{ education_include | markdownify }}
 </div>

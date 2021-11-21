@@ -1,0 +1,9 @@
+{% include header_links.html %}
+
+<div class="border-bottom border-2 border-dark-50 my-3"></div>
+
+<div class="flex-container w-100 px-1 my-3">
+    {% capture letter_content %}{% include letter/letter_content.md %}{% endcapture %}
+    {{ letter_content | markdownify }}
+</div>
+
