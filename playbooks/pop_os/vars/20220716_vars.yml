@@ -5,7 +5,9 @@ versions:
   go: 1.18.3
   nvm: 0.39.1
   node: stable
+paths:
+  dev: ~/dev
+  go: '$HOME/dev/go'
+
 user:
   name: chris
-go:
-  path: '$HOME/dev/go'
