@@ -5,4 +5,3 @@
     - import_tasks: ../shared/tasks/dev.yml
     - import_tasks: ../shared/tasks/setup_user.yml
     - import_tasks: ./tasks/keybindings.yml
-    - import_tasks: ./tasks/yubikey.yml
