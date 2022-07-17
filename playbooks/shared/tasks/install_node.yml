@@ -1,12 +1,22 @@
 ---
+- name: Check exists
+  stat:
+    path: ~/.nvm
+  register: nvm_stat
+
 - name: Download nvm installer script
   get_url:
     url: https://raw.githubusercontent.com/nvm-sh/nvm/v{{ versions.nvm }}/install.sh
     dest: /tmp/nvm_installer.sh
+  when: not nvm_stat.stat.exists
+
 - name: Make executable
   file:
     path: /tmp/nvm_installer.sh
     mode: '777'
+  when: not nvm_stat.stat.exists
+
 - name: Install nvm
   shell:
     cmd: 'NODE_VERSION={{ versions.node }} /tmp/nvm_installer.sh'
+  when: not nvm_stat.stat.exists

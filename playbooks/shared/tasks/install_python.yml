@@ -11,6 +11,6 @@
 - name: Add ~/.local/bin to .bashrc
   lineinfile:
     dest: ~/.bashrc
-    regexp: '^$PATH:.local/bin'
+    regexp: '^export PATH="\$PATH:~\/\.local\/bin.*'
     line: 'export PATH="$PATH:~/.local/bin"'
     state: present
