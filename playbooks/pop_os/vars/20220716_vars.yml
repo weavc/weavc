@@ -1,0 +1,11 @@
+---
+versions:
+  dotnet: 6.0
+  ubuntu: 22.04
+  go: 1.18.3
+  nvm: 0.39.1
+  node: stable
+user:
+  name: chris
+go:
+  path: '$HOME/dev/go'

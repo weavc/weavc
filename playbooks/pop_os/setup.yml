@@ -1,16 +1,8 @@
 ---
 - hosts: localhost
 
-  vars_prompt:
-    - name: user
-      prompt: "Enter username: "
-      private: no
-      default: chris
-
   tasks:
-    - import_tasks: ../shared/tasks/install_docker.yml
-    - import_tasks: ../shared/tasks/install_python.yml
+    - import_tasks: ../shared/tasks/dev.yml
     - import_tasks: ../shared/tasks/setup_user.yml
     - import_tasks: ./tasks/keybindings.yml
     - import_tasks: ./tasks/yubikey.yml
-    - import_tasks: ./tasks/install_vscode.yml

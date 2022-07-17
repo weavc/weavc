@@ -1,0 +1,22 @@
+---
+- name: Download go
+  get_url:
+    url: https://golang.org/dl/go{{ versions.go }}.linux-amd64.tar.gz
+    dest: /tmp/go.tgz
+- name: Decompress go package
+  unarchive:
+    src: /tmp/go.tgz
+    dest: /usr/local/
+  become: true
+- name: Make directories
+  file:
+    path: '{{ paths.go }}/{{item}}'
+    state: directory
+  with_items:
+    - 'src'
+    - 'bin'
+- name: Adding go environment vars
+  copy:
+    content: export GOPATH="{{ paths.go }}"; export PATH="/usr/local/go/bin:{{ paths.go }}/bin:$PATH"
+    dest: /etc/profile.d/go_env.sh
+  become: true

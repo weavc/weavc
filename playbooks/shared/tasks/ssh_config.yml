@@ -1,4 +1,9 @@
 ---
+- name: Install ssh server
+  apt:
+    name: openssh-server
+    state: present
+    update_cache: no
 - name: Update SSH configuration
   become: true
   lineinfile:

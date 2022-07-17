@@ -1,0 +1,12 @@
+---
+- name: Download nvm installer script
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v{{ versions.nvm }}/install.sh
+    dest: /tmp/nvm_installer.sh
+- name: Make executable
+  file:
+    path: /tmp/nvm_installer.sh
+    mode: '777'
+- name: Install nvm
+  shell:
+    cmd: 'NODE_VERSION={{ versions.node }} /tmp/nvm_installer.sh'
