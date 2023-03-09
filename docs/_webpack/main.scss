@@ -2,6 +2,9 @@
 @import "code";
 @import "~bootstrap/scss/bootstrap";
 
+@mixin text-mono {
+    font-family: monospace !important;
+}
 
 body { 
     font-family: Tahoma, Geneva, sans-serif !important;
@@ -36,25 +39,25 @@ tr {
 }
 
 .highlight-success:hover {
-    background-color: darken($success, 10%) !important;
+    background-color: darken($success, 5%) !important;
 }
 
 .bg-1 {
-    background-color: $gray-700;
-    color: $gray-100;
-    border-color: $gray-900;
+    background-color: $gray-600 !important;
+    color: $gray-100 !important;
+    border-color: $gray-900 !important;
 }
 
 .bg-2 {
     background-color: $gray-800 !important;
     color: $gray-100 !important;
-    border-color: $gray-700;
+    border-color: $gray-500 !important;
 }
 
-.bg-3 {
-    background-color: #262628;
-    color: $gray-100;
-    border-color: $gray-700;
+.bg-body {
+    background-color: $gray-900 !important;
+    color: $gray-100 !important;
+    border-color: $gray-900 !important;
 }
 
 .alert-1 {
@@ -72,16 +75,17 @@ tr {
 }
 
 .nav-link {
-    color: $primary;
+    color: darken($light, 2%);
 }
 
 .nav-link:hover {
-    color:lighten($primary, 20%);
+    color: darken($light, 20%);
 }
 
 .navbar {
     border-top: 1px solid $gray-700;
     border-bottom: 1px solid $gray-700;
+    @include text-mono()
 }
 
 table {
@@ -92,10 +96,11 @@ table {
 a {
     color: $primary;
     text-decoration: none !important;
+    @include text-mono()
 }
 
 a:hover {
-    color:lighten($primary, 20%);
+    color:lighten($primary, 10%);
 }
 
 code {
@@ -120,12 +125,21 @@ code {
 
 @media (max-width: 992px) {
     .content {
-        max-width: 97%;
+        max-width: 95%;
     }
+}
+
+.text-mono {
+    @include text-mono()
 }
 
 @media (max-width: 768px) {
     .content {
         max-width: 97%;
+    }
+
+    .sm-block {
+        display: block !important;
+        width: 100%;
     }
 }
