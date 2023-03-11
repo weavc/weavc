@@ -1,23 +1,23 @@
 <div class="row">
-    <div class="col-12 mb-1 pt-1">
-        <h3 class="d-inline">
-            <b>
-                {% if include.icon != nil %}
-                <i class="bi bi-{{include.icon}}"></i>&nbsp;
-                {% endif %}
-                {{ include.title }}&nbsp;
-            </b>
-        </h3>
-        {% if include.repo %}
-        <span class="d-inline float-right">
-            {% include github-badge.html repo=include.repo %}
-        </span>
+  <div class="col-12 mb-1 pt-1">
+    <h3 class="d-inline">
+      <b>
+        {% if include.icon != nil %}
+        <i class="bi bi-{{include.icon}}"></i>&nbsp;
         {% endif %}
-        {% if include.tags != nil %}
-        <div class="mt-2">
-            {% include page-tags.html %}
-        </div>
-        {% endif %}
+        {{ include.title }}&nbsp;
+      </b>
+    </h3>
+    {% if include.repo %}
+    <span class="d-inline float-right">
+      {% include github-badge.html repo=include.repo %}
+    </span>
+    {% endif %}
+    {% if include.tags != nil %}
+    <div class="mt-2">
+      {% include page-tags.html %}
     </div>
-</div>  
+    {% endif %}
+  </div>
+</div>
 <hr />

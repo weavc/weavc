@@ -1,9 +1,9 @@
 <div class="alert alert-{{include.type}} d-flex align-items-center px-4" role="alert">
-    {% if include.icon != nil %}
-    <i class="bi bi-{{include.icon}} flex-shrink-0 me-2 fs-3 d-inline"></i>
-    <div class="d-inline-block mx-2"></div>
-    {% endif %}
-    <div class="d-inline align-middle">
-        {{include.text}}
-    </div>
+  {% if include.icon != nil %}
+  <i class="bi bi-{{include.icon}} flex-shrink-0 me-2 fs-3 d-inline"></i>
+  <div class="d-inline-block mx-2"></div>
+  {% endif %}
+  <div class="d-inline align-middle">
+    {{include.text}}
+  </div>
 </div>

@@ -1,85 +1,39 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="title" content="{{ page.title }}">
-        <meta name="description" content="{{ page.description }}">
-        <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="title" content="{{ page.title }}">
+    <meta name="description" content="{{ page.description }}">
+    <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 
-        <title>Chris Weaver - {{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="/assets/js/bundle.js"></script>
+    <title>Chris Weaver - {{ page.title }}</title>
 
-    </head>
+    <script src="/assets/js/bundle.js"></script>
 
-    <body class="bg-body border-secondary d-flex flex-column">
+  </head>
 
-        <!-- Header -->
-        {% include header.html %}
+  <body class="bg-body border-secondary d-flex flex-column">
 
-        <!-- Navigation Bar -->
-        <!-- <nav class="navbar navbar-expand-lg bg-black sticky-top flex-row text-mono">
-            <div class="content">
-                <ul class="navbar-nav flex-row">
-                    <li class="nav-item me-5">
-                        <a class="nav-link p-0" href="/"><b>>&nbsp;Home</b></a>
-                    </li>
-                    <li class="nav-item mx-5">
-                        <a class="nav-link p-0" href="/projects"><b>>&nbsp;Projects</b></a>
-                    </li>
-                    <li class="nav-item mx-5">
-                        <a class="nav-link p-0" href="/notes"><b>>&nbsp;Notes</b></a>
-                    </li>
-                </ul>
-            </div>
-        </nav> -->
+    {% include header.html %}
 
-        <div class="bg-2 container-fluid border-top border-bottom border-1 fs-6">
-            <div class="content text-left my-1">
-                <div class="">
-                    <div class="text-left text-nowrap d-inline-block sm-block">
-                        <a class="nav-link me-5" href="/">
-                            <b>
-                                >&nbsp;Home
-                            </b>
-                        </a>
-                    </div>
-                    <div class="text-left text-nowrap d-inline-block sm-block">
-                        <a class="nav-link me-5" href="/projects">
-                            <b>
-                                >&nbsp;Projects
-                            </b>
-                        </a>
-                    </div>     
-                    <div class="text-left text-nowrap d-inline-block sm-block">
-                        <a class="nav-link me-5" href="/notes">
-                            <b>
-                                >&nbsp;Notes
-                            </b>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    {% include nav.html %}
+
+    <div class="content">
+      <div class="card my-4 border-1 bg-2">
+        <div class="card-body">
+          {{ content }}
         </div>
-        
+      </div>
+    </div>
 
-        <!-- Site wrapper -->
-        <div class="content">
-            <div class="card my-4 border-1 bg-2">
-                <div class="card-body">
-                    {{ content }}
-                </div>
-            </div>
-        </div>
+    <footer id="sticky-footer" class="footer bg-2 text-white-50 py-1">
+      {% include footer-links.html %}
+    </footer>
 
-        <!-- Footer -->
-        <footer id="sticky-footer" class="footer bg-2 text-white-50 py-1">
-            {% include footer-links.html %}
-        </footer>
-    </body>
+  </body>
 
 </html>
-

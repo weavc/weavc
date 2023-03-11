@@ -1,10 +1,8 @@
 @import "custom";
 @import "code";
+@import "media";
+@import "mixins";
 @import "~bootstrap/scss/bootstrap";
-
-@mixin text-mono {
-    font-family: monospace !important;
-}
 
 body { 
     font-family: Tahoma, Geneva, sans-serif !important;
@@ -17,6 +15,28 @@ tr {
     border-color: $gray-400 !important;
 }
 
+table {
+    @extend .table;
+    @extend .text-light;
+}
+
+a {
+    color: $primary;
+    text-decoration: none !important;
+    @include text-mono()
+}
+
+a:hover {
+    color:lighten($primary, 10%);
+}
+
+code {
+    color: $gray-400;
+}
+
+#sticky-footer {
+    flex-shrink: none;
+}
 
 .highlight-1:hover {
     background-color: $gray-700 !important;
@@ -70,10 +90,6 @@ tr {
     color: $gray-400 !important;
 }
 
-#sticky-footer {
-    flex-shrink: none;
-}
-
 .nav-link {
     color: darken($light, 2%);
 }
@@ -88,25 +104,6 @@ tr {
     @include text-mono()
 }
 
-table {
-    @extend .table;
-    @extend .text-light;
-}
-
-a {
-    color: $primary;
-    text-decoration: none !important;
-    @include text-mono()
-}
-
-a:hover {
-    color:lighten($primary, 10%);
-}
-
-code {
-    color: $gray-400;
-}
-
 .code {
     color: $gray-400;
 }
@@ -117,29 +114,6 @@ code {
     width: 100%;
 }
 
-@media (max-width: 1280px) {
-    .content {
-        max-width: 80%;
-    }
-}
-
-@media (max-width: 992px) {
-    .content {
-        max-width: 95%;
-    }
-}
-
 .text-mono {
     @include text-mono()
-}
-
-@media (max-width: 768px) {
-    .content {
-        max-width: 97%;
-    }
-
-    .sm-block {
-        display: block !important;
-        width: 100%;
-    }
 }
