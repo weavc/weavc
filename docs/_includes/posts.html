@@ -5,12 +5,12 @@
       {%- for p in items %}
       {% if p.categories contains 'notes' %}
       {% if p.terms contains page.filter or page.filter == nil %}
-      <li class="bg-1 highlight-3 list-group-item d-flex justify-content-between align-items-center">
+      <li class="bg-1 highlight-2 list-group-item d-flex justify-content-between align-items-center">
         <a href="{{p.url}}" class="text-start stretched-link text-light">
           {% if p.icon != nil %}<span><i class="bi bi-{{p.icon}}"></i>&nbsp;</span>{% endif %}
           <span>{{p.title}}</span>
         </a>
-        <span class="ms-2 badge bg-info badge-pill">{{p.date | date: "%d-%m-%Y" }}</span>
+        <span class="ms-2 badge bg-primary badge-pill">{{p.date | date: "%d-%m-%Y" }}</span>
       </li>
       {% endif %}
       {% endif %}

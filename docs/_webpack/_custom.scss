@@ -1,18 +1,19 @@
-$white:    #faf2d2;
-$gray-100: #eee1c0;
-$gray-200: #e4d7bc;
-$gray-300: #c7baa2;
-$gray-400: #a3978c;
-$gray-500: hsl(240, 12%, 25%);
-$gray-600: hsl(240, 10%, 14%);
-$gray-700: hsl(240, 9%, 12%);
-$gray-800: hsl(240, 7%, 10%);
-$gray-900: hsl(240, 6%, 8%);
+$white: hsl(240, 100%, 100%);
 $black:    #000000;
+$gray-100: darken(#f8f9fa, 10%);
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: darken(#adb5bd, 20%);
+$gray-600: darken(#6c757d, 26%);
+$gray-700: darken(#495057, 15%);
+$gray-800: darken(#343a40, 12%);
+$gray-900: darken(#212529, 10%);
 
-$danger: #cc241d;
-$success: #0d5503;
-$primary: #168b06;
-$warning: #289c8d;
-$info: #168b06;
-$secondary: darken($gray-300, 40%);
+
+$danger: #ca524e;
+$success: #60b454;
+$primary: #468dbd;
+$warning: #d48e64;
+$info: #468dbd;
+$secondary: #90bdd6;
