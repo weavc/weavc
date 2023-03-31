@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd $(pwd)
+
+for FILE in *.webp; do
+    dwebp "$FILE" -o "${FILE%.*}".png && rm "$FILE"
+done
