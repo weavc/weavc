@@ -1,12 +1,12 @@
 @import "custom";
-@import "~bootstrap/scss/bootstrap";
 @import "code";
 @import "media";
 @import "mixins";
+@import "~bootstrap/scss/bootstrap";
+
 
 body { 
-    font-family: Tahoma, Geneva, sans-serif !important;
-    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
     background-color: $gray-700;
     height: 100%;
 }
@@ -21,13 +21,12 @@ table {
 }
 
 a {
-    color: $primary;
-    text-decoration: none !important;
+    color: $secondary;
     @include text-mono()
 }
 
 a:hover {
-    color:lighten($primary, 10%);
+    color:lighten($blue-400, 10%);
 }
 
 code {
@@ -36,6 +35,10 @@ code {
 
 #sticky-footer {
     flex-shrink: none;
+}
+
+.reset-font {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
 }
 
 .highlight-1:hover {
@@ -91,15 +94,16 @@ code {
 }
 
 .text-muted {
-    color: $gray-200 !important;
+    color: $gray-400 !important;
+    font-size: 0.92rem;
 }
 
 .nav-link {
-    color: darken($light, 2%);
+    color: darken($light, 6%);
 }
 
 .nav-link:hover {
-    color: $primary
+    color: darken($light, 35%);
 }
 
 .navbar {
@@ -120,4 +124,19 @@ code {
 
 .text-mono {
     @include text-mono()
+}
+
+.blink {
+    animation: blink-animation 1500ms steps(3, start) infinite;
+    -webkit-animation: blink-animation 1500ms steps(3, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
 }

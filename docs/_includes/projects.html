@@ -10,13 +10,10 @@
             {{p.description}}
             <br />
             <br />
-            {% for tag in p.tags %}
-            <span class="badge bg-primary">{{tag}}</span>
-            {% if forloop.last != true %}&nbsp;{% endif%}
-            {% endfor %}
+            {% include tags.html tags=p.tags %}
           </p>
         </div>
-        <div class="card-footer text-muted text-end">
+        <div class="card-footer text-end">
           {% include github-badge.html repo=p.repo %}
         </div>
       </div>
