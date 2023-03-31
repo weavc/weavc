@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   web:
-    image: ghcr.io/chrisweaver1/blog:latest
+    image: ghcr.io/weavc/blog:latest
     networks: 
       - web-overlay
     restart: unless-stopped

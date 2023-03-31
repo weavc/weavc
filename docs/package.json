@@ -1,5 +1,5 @@
 {
-  "name": "chrisweaver1",
+  "name": "weavc",
   "version": "1.0.0",
   "description": "",
   "private": "true",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrisweaver1/chrisweaver1.git"
+    "url": "git+https://github.com/weavc/weavc.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chrisweaver1/chrisweaver1/issues"
+    "url": "https://github.com/weavc/weavc/issues"
   },
-  "homepage": "https://github.com/chrisweaver1/chrisweaver1#readme",
+  "homepage": "https://github.com/weavc/weavc#readme",
   "dependencies": {
     "bootstrap": "^5.1.1",
     "bootstrap-icons": "^1.5.0",

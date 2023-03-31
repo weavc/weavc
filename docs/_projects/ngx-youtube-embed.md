@@ -1,15 +1,15 @@
 ---
 layout: md
 title: ngx-youtube-embed
-repo: chrisweaver1/ngx-youtube-embed
+repo: weavc/ngx-youtube-embed
 description: NPM package for embedding & configuring Youtube videos in an Angular website.
 tags: ['angular', 'npm', 'html', 'typescript']
 sort_key: 4
 ---
 
 [![npm version](https://badge.fury.io/js/ngx-youtube-embed.svg)](https://badge.fury.io/js/ngx-youtube-embed)
-![npm publish](https://github.com/ChrisWeaver1/ngx-youtube-embed/workflows/npm%20publish/badge.svg?branch=master&event=release)
-![node build and test](https://github.com/ChrisWeaver1/ngx-youtube-embed/workflows/node%20build%20and%20test/badge.svg)
+![npm publish](https://github.com/weavc/ngx-youtube-embed/workflows/npm%20publish/badge.svg?branch=master&event=release)
+![node build and test](https://github.com/weavc/ngx-youtube-embed/workflows/node%20build%20and%20test/badge.svg)
 
 
 An Angular component that allows the embedding of youtube videos into an angular webpage. Options and event hooks can be passed through to the component so the user can fully utilize [Youtube's embed/iframe api](https://developers.google.com/youtube/iframe_api_reference). 

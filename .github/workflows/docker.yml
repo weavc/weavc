@@ -31,5 +31,5 @@ jobs:
           file: docs/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/chrisweaver1/blog:latest
+          tags: ghcr.io/weavc/blog:latest
 

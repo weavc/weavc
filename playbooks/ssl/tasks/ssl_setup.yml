@@ -24,7 +24,7 @@
     auto_remove: yes
     command: 
       - "certonly"
-      - "--email chrisweaver1@pm.me"
+      - "--email weavc@pm.me"
       - "--dns-ovh --agree-tos"
       - "-d weav.ovh,*.weav.ovh -n"
       - "--dns-ovh-credentials /opt/ovh.ini"
