@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Custom Lifetime validator for long lived JWT in dotnet
+title: Custom lifetime validator for long lived JWT in dotnet
 tags: ['dev', 'security']
 terms: ['dev', 'dotnet']
 icon: code-slash
@@ -22,7 +22,7 @@ The following is a custom `LifetimeValidator` method that can be used in `TokenV
         if (!expires.HasValue && validationParameters.RequireExpirationTime)
         {
             var overflowDate = DateTimeOffset.FromUnixTimeSeconds(int.MaxValue).DateTime;
-            if (securityToken.ValidTo >= overflowDate)
+            if (securityToken is not null && securityToken.ValidTo >= overflowDate)
                 expires = securityToken.ValidTo;
         }
         
