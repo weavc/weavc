@@ -67,7 +67,7 @@ jobs:
           done
           tar \
             --dereference --hard-dereference \
-            --directory . \
+            --directory _site/ \
             -cvf "$RUNNER_TEMP/artifact.tar" \
             --exclude=.git \
             --exclude=.github \
