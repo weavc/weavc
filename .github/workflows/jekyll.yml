@@ -2,7 +2,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ['master']
     paths: 
       - 'docs/**'
       - '.github/workflows/jekyll.yml'
@@ -15,7 +15,7 @@ permissions:
   id-token: write
   
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
   
 defaults:
@@ -54,32 +54,12 @@ jobs:
       - name: Build with Jekyll
         run: bundle exec jekyll build
         env:
-          JEKYLL_ENV: production
-          
-      - name: Debugging
-        run: ls -al
-        
-      - name: Archive artifact
-        shell: sh
-        run: |
-          chmod -c -R +rX . | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          tar \
-            --dereference --hard-dereference \
-            --directory _site/ \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
-
+          JEKYLL_ENV: production   
+      
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: "github-pages"
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: "1"
-          if-no-files-found: error
+          path: 'docs/_site/'
 
   deploy:
     environment:
