@@ -58,6 +58,8 @@ jobs:
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@253fd476ed429e83b7aae64a92a75b4ceb1a17cf
+        with:
+          path: "../_site"
 
   deploy:
     environment:
