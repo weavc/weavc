@@ -1,5 +1,5 @@
 _site/
-docs/assets/js/
+docs/assets/js/*
 dist/
 node_modules/
 **/bundle/*
