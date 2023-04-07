@@ -11,6 +11,7 @@ on:
     - '*'
     paths: 
       - 'docs/**'
+      - '.github/ruby.yml'
 
 defaults:
   run:
