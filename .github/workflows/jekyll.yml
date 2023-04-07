@@ -42,12 +42,12 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: debug output
-        run: ls -R
       - name: Build with Jekyll
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+      - name: debug output
+        run: ls -R
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
