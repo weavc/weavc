@@ -59,27 +59,8 @@ jobs:
       - name: Debugging
         run: ls -al
         
-      - name: Archive artifact
-        shell: sh
-        run: |
-          chmod -c -R +rX . | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          tar \
-            --dereference --hard-dereference \
-            --directory _site/ \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
-
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: "github-pages"
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: "1"
-          if-no-files-found: error
+        uses: weavc/upload-pages-artifact@resolve-correct-path
 
   deploy:
     environment:
