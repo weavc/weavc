@@ -1,8 +1,10 @@
 _site/
+docs/assets/js/
 dist/
 node_modules/
 **/bundle/*
 hosts.ini
 *.vault
 
+!.gitkeep
 !.keep
