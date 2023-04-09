@@ -1,20 +1,29 @@
 ---
-- name: Download MS product repository
+- name: Check exists
+  stat:
+    path: ~/dotnet
+  register: dotnet_stat
+
+- name: Download dotnet script
   get_url:
-    url: https://packages.microsoft.com/config/ubuntu/{{ versions.ubuntu }}/packages-microsoft-prod.deb
-    dest: /tmp/packages-microsoft-prod.deb
-- name: Install MS product repository
-  apt: deb=/tmp/packages-microsoft-prod.deb
-  become: true
-- name: Make sure HTTPS is supported by apt
-  apt:
-    name: apt-transport-https
+    url: https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
+    dest: /tmp/dotnet-install.sh
+  when: not dotnet_stat.stat.exists
+
+- name: Make executable
+  file:
+    path: /tmp/dotnet-install.sh
+    mode: '777'
+  when: not dotnet_stat.stat.exists
+
+- name: Install nvm
+  shell:
+    cmd: '/tmp/dotnet-install.sh --channel {{ versions.dotnet }} --install-dir ~/dotnet --os linux'
+  when: not dotnet_stat.stat.exists
+
+- name: Add ~/dotnet to .bashrc
+  lineinfile:
+    dest: ~/.bashrc
+    regexp: '^export PATH="\$PATH:$HOME\/\dotnet.*'
+    line: 'export PATH="$PATH:$HOME/dotnet"'
     state: present
-    update_cache: no
-  become: true
-- name: Install .NET Core SDK
-  apt:
-    name: dotnet-sdk-{{ versions.dotnet }}
-    state: present
-    update_cache: yes
-  become: true

@@ -4,7 +4,7 @@
     path: '{{ paths.dev }}/{{ item }}'
     state: directory
   with_items:
-    - projects
+    - proj
     - builds
     - misc
 - import_tasks: ./install_docker.yml
@@ -12,5 +12,4 @@
 - import_tasks: ./install_go.yml
 - import_tasks: ./install_dotnet.yml
 - import_tasks: ./install_node.yml
-- import_tasks: ./install_vscode.yml
 - import_tasks: ./install_rust.yml
