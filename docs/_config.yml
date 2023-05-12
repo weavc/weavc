@@ -18,6 +18,7 @@ kramdown:
         line_numbers: false
         tab_width: 2
         css: class
+repository: weavc/weavc
 url: "https://www.weav.ovh"
 plugins:
   - jekyll-sitemap
