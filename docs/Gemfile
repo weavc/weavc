@@ -9,3 +9,6 @@ gem 'github-pages', group: :jekyll_plugins
 # gem "rails"
 
 gem "webrick", "~> 1.8"
+gem 'kramdown-parser-gfm', group: :jekyll_plugins
+gem 'jekyll-theme-minimal', group: :jekyll_plugins 
+gem 'jekyll-sitemap', group: :jekyll_plugins
