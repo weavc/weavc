@@ -12,7 +12,8 @@
     "start": "run-p start:{jekyll,webpack}",
     "start:jekyll": "bundle exec jekyll serve",
     "start:webpack": "webpack --mode=development --watch",
-    "preinstall": "bundle install"
+    "preinstall": "bundle install",
+    "generate-thumbs": "mogrify -path assets/gallery/thumbs -resize 20% assets/gallery/imgs/*"
   },
   "repository": {
     "type": "git",

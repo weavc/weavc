@@ -18,3 +18,5 @@ kramdown:
         line_numbers: false
         tab_width: 2
         css: class
+imagesurl: "/assets/gallery/imgs/"
+thumbsurl: "/assets/gallery/thumbs/"
