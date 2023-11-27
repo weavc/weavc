@@ -7,6 +7,8 @@ icon: code-slash
 sort_key: 1
 ---
 
+Makefile wrapper around useful EF & git commands for migrations.
+
 ```Make
 MIGRATION_NAME ?= $(shell bash -c 'read -p "Migration name > " migration_name; echo $$migration_name')
 PROJECT = <project>/
@@ -28,4 +30,5 @@ migration.restore_migrations:
 
 migration.restore:
 	make migration.restore_snapshot && migration.restore_migrations
+
 ```
