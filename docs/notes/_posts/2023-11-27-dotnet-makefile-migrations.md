@@ -1,15 +1,13 @@
 ---
 layout: post
-title: Makefile wrapper for .NET migration commands 
+title: Makefile for useful EF & git commands for migraions in .NET
 description: 'Makefile wrapper around useful EF & git commands for migrations.'
 terms: ['dotnet', 'dev', 'linux']
 icon: code-slash
 sort_key: 1
 ---
 
-Makefile wrapper around useful EF & git commands for migrations.
-
-```Make
+```bash
 MIGRATION_NAME ?= $(shell bash -c 'read -p "Migration name > " migration_name; echo $$migration_name')
 PROJECT = <project>/
 STARTUP_PROJECT = <project>/
