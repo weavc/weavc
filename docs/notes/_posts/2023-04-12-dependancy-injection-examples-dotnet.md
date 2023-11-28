@@ -40,7 +40,7 @@ public static IServiceCollection AddStorage(this IServiceCollection sc, Action<S
 
         // Use the options to configure services
         var @default = services.FirstOrDefault(s => s.GetType().Name == options.Default);
-        if (@deafult is null)
+        if (@default is null)
             throw new NotImplementedException($"StorageProvider {options.Default} is not configured.");
 
         // Or to return a different implementation
