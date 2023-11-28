@@ -9,7 +9,7 @@ title: Home
 ### <i class=" bi bi-card-text text-secondary"></i>&nbsp;&nbsp;&nbsp;About
 Software developer with a background in ethical hacking and security.
 
-Currently working as a full-stack developer, using a variety of tech including .Net, Azure, Microsoft SQL, MongoDB, NodeJS, Angular and Electron. 
+Currently working as a lead backend developer, using a variety of tech including .Net, Azure, Microsoft SQL, MongoDB, NodeJS, Angular and Electron. 
 
 Feel free to check out my [projects](/projects) and public [notes](/notes).
 
