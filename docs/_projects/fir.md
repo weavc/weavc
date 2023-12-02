@@ -2,7 +2,7 @@
 layout: md
 title: Fir - Command line task management 
 repo: weavc/fir
-description: Fir - Command line task management 
+description: Configurable command line task management tool inspired by emacs org mode & web based task management tools.
 tags: ['python', 'cli', 'project-management']
 sort_key: 1
 pinned: true
