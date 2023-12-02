@@ -5,6 +5,7 @@ repo: weavc/fir
 description: Fir - Command line task management 
 tags: ['python', 'cli', 'project-management']
 sort_key: 1
+pinned: true
 ---
 
 <small>This project is in development & subject to breaking changes.</small>
