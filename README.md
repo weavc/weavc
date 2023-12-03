@@ -1,6 +1,6 @@
 #### Software developer with a background in ethical hacking and security.
 
-Currently working as a full stack developer, using Dotnet core, Microsoft SQL, MongoDB, NodeJS, Angular and Electron. 
+Currently working as a lead backend developer, using a variety of tech including .Net, Azure, Microsoft SQL, MongoDB, NodeJS, Angular and Electron.
 
 I enjoy playing with all sorts of tech and learning new stuff.
 
