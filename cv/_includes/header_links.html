@@ -1,7 +1,7 @@
 <div class="text-muted text-center">
     <small>
         <i class="text-dark bi bi-envelope-fill"></i>&nbsp;&nbsp;
-        {% if site.hide_details %}
+        {% if site.hide_details and site.hide_email %}
         <small class="text-hidden">@hidden@</small>
         {% else %}
         <a href="mailto:weac@pm.me">weavc@pm.me</a>
