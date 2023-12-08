@@ -1,5 +1,11 @@
-
-{% include sub_heading.html text="Lead Backend Developer, SG World Ltd" end="March 2018 - Present" footnote="Crewe, UK" %}
+{% capture heading %}
+{% if site.hide_details %}
+Lead Backend Developer, <span class="text-hidden">@hidden@@hidden@</span>
+{% else %}
+Lead Backend Developer, SG World Ltd
+{% endif %}
+{% endcapture %}
+{% include sub_heading.html text=heading end="March 2018 - Present" footnote="Crewe, UK" %}
 Having been here for over 5 years & working my way up from a junior software devleoper, I have had the opportunity to be involved with many aspects of software devleopment process, including but certainly not limited to:
 - Full-stack development for our primary CRM product
   - Backend development (.NET, Microsoft SQL, MongoDB)

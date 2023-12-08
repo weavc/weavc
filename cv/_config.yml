@@ -12,3 +12,4 @@ kramdown:
         line_numbers: false
         tab_width: 2
         css: class
+hide_details: false

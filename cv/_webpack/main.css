@@ -8,6 +8,16 @@ p {
     margin-bottom: 0.5rem;
 }
 
- .text-highlight {
+.text-highlight {
     color: #5B5EA6;
 }
+
+.text-hidden {
+    color: dimgray;
+    background-color: dimgray;
+}
+
+body{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }

@@ -1,5 +1,9 @@
 <div class="text-center">
+    {% if site.hide_details %}
+    <h1 style="margin-bottom: -0.3rem;"><b class="text-hidden">@hidden@ @hidden@</b></h1>
+    {% else %}
     <h1 style="margin-bottom: -0.3rem;"><b>Chris Weaver</b></h1>
+    {% endif %}
     <small class="text-highlight"><b>Software Developer - DevOps Engineer - Cheshire, UK</b></small>
     <br/>
     {% include header_links.html %}

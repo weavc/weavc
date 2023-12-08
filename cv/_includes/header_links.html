@@ -1,9 +1,37 @@
 <div class="text-muted text-center">
-    <small><i class="text-dark bi bi-envelope-fill"></i>&nbsp;&nbsp;<a href="mailto:weac@pm.me">weavc@pm.me</a></small>
+    <small>
+        <i class="text-dark bi bi-envelope-fill"></i>&nbsp;&nbsp;
+        {% if site.hide_details %}
+        <small class="text-hidden">@hidden@</small>
+        {% else %}
+        <a href="mailto:weac@pm.me">weavc@pm.me</a>
+        {% endif %}
+    </small>
     &nbsp;|&nbsp;
-    <small><i class="text-dark bi bi-journal-code"></i>&nbsp;&nbsp;<a href="https://www.weav.ovh">www.weav.ovh</a></small>
+    <small>
+        <i class="text-dark bi bi-journal-code"></i>&nbsp;&nbsp;
+        {% if site.hide_details %}
+        <small class="text-hidden">@hidden@</small>
+        {% else %}
+        <a href="https://www.weav.ovh">www.weav.ovh</a>
+        {% endif %}
+    </small>
     &nbsp;|&nbsp;
-    <small><i class="text-dark bi bi-github"></i>&nbsp;&nbsp;<a href="https://github.com/weavc">github/weavc</a></small>
+    <small>
+        <i class="text-dark bi bi-github"></i>&nbsp;&nbsp;
+        {% if site.hide_details %}
+        <small class="text-hidden">@hidden@</small>
+        {% else %}
+        <a href="https://github.com/weavc">github/weavc</a>
+        {% endif %}
+    </small>
     &nbsp;|&nbsp;
-    <small><i class="text-dark bi bi-linkedin"></i>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/weavc">in/weavc</a></small>
+    <small>
+        <i class="text-dark bi bi-linkedin"></i>&nbsp;&nbsp;
+        {% if site.hide_details %}
+        <small class="text-hidden">@hidden@</small>
+        {% else %}
+        <a href="https://www.linkedin.com/in/weavc">in/weavc</a>
+        {% endif %}
+    </small>
 </div>
