@@ -7,13 +7,15 @@ icon: code-slash
 sort_key: 1
 ---
 
-```bash
-# You can override some default options with config.fish:
-#
-#  set -g theme_short_path yes
-#  set -g theme_stash_indicator yes
-#  set -g theme_ignore_ssh_awareness yes
+### `.config/fish/config.fish`
+```fish
+if status is-interactive
+    set -gx PATH $PATH $HOME/.local/bin /opt/bin $HOME/.cargo/bin $HOME/.local/dotnet
+end
+```
 
+### `.config/fish/functions/fish_prompt.fish`
+```fish
 function fish_prompt
   set -l last_command_status $status
   set -g fish_prompt_pwd_full_dirs 100
@@ -25,14 +27,8 @@ function fish_prompt
     set cwd (prompt_pwd)
   end
 
-
   set -l fish     "⋊>"
-  set -l ahead    "↑"
-  set -l behind   "↓"
-  set -l diverged "⥄"
   set -l dirty    (set_color red --bold)"⨯"(set_color normal)
-  set -l stash    "≡"
-  set -l none     "◦"
 
   set -l normal_color     (set_color normal)
   set -l success_color    (set_color brgreen)
@@ -76,4 +72,30 @@ function fish_right_prompt
   set_color normal
 end
 
+function git_is_repo -d "Check if directory is a repository"
+  test -d .git
+  or begin
+    set -l info (command git rev-parse --git-dir --is-bare-repository 2>/dev/null)
+    and test $info[2] = false
+  end
+end
+
+function git_is_worktree -d "Check if directory is inside the worktree of a repository"
+  git_is_repo
+  and test (command git rev-parse --is-inside-git-dir) = false
+end
+
+function git_is_touched -d "Check if repo has any changes"
+  git_is_worktree; and begin
+    not command git diff-index --cached --quiet HEAD -- >/dev/null 2>&1
+    or not command git diff --no-ext-diff --quiet --exit-code >/dev/null 2>&1
+  end
+end
+
+function git_branch_name -d "Get current branch name"
+  git_is_repo; and begin
+    command git symbolic-ref --short HEAD 2> /dev/null;
+      or command git show-ref --head -s --abbrev | head -n1 2> /dev/null
+  end
+end
 ```
