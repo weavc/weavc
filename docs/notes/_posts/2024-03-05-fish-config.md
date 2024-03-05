@@ -7,6 +7,14 @@ icon: code-slash
 sort_key: 1
 ---
 
+```
+sudo apt install fish
+sudo apt update
+sudo add-apt-repository ppa:fish-shell/release-3
+sudo apt upgrade
+```
+
+
 ### `.config/fish/config.fish`
 ```fish
 if status is-interactive
