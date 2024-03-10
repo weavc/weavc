@@ -2,7 +2,7 @@
 layout: post
 title: Jekyll
 tags: ['web', 'dev']
-icon: code-slash
+icon: globe
 ---
 
 This website is built with Jekyll.
@@ -28,14 +28,14 @@ Or setup as a devcontainer in vscode with docker
 - Then `ctrl + p` again & select `Remote-Containers: Rebuild & Reopen as container`
 
 ### New project
-```
+```shell
 gem install jekyll bundler
 jekyll new [project-name]
 cd [project-name]
 ```
 
 ### Run
-```
+```shell
 bundle exec jekyll serve
 ```
 

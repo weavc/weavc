@@ -5,9 +5,9 @@ tags: ['dev', 'devops']
 icon: box-seam
 ---
 
-## Compose
+### Compose
 
-### Example:
+#### Example:
 ```yaml
 version: '3.8'
 services:
@@ -38,8 +38,8 @@ services:
       - "10001:10001"
       - "10002:10002"
 
-  # build example
   discord:
+    # build example
     build: 
       context: ../
       dockerfile: .docker/Dockerfile.package
@@ -47,12 +47,16 @@ services:
         - package=discord
     ports:
       - "50051:8001"
+    # Adding service to an ipam network
     networks:
       netty:
         ipv4_address: 172.123.2.1
-
-See full project here:
-{% include github-badge.html repo="weavc/deploy-examples" %}
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: "2g"
 
 networks:
   netty:
@@ -62,9 +66,10 @@ networks:
         - subnet: 172.123.0.0/16
 ```
 
-## Dockerfiles
 
-### Go
+### Dockerfiles
+
+#### Go
 
 ```dockerfile
 # Use the official Go image as the base image
@@ -112,6 +117,9 @@ EXPOSE 5549
 CMD ["./weavc"]
 ```
 
+
+#### .NET
+
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS build
 WORKDIR /app
@@ -144,14 +152,15 @@ EXPOSE 80 443
 ```
 
 
-## Swarm
+### Swarm
 
-### Services/Swarms examples
-```
+#### Services/Swarms examples
+```shell
 docker swarm init
 docker network create --driver overlay my-network
 ```
-```
+
+```shell
 docker service create \
     --mount type=bind,src=<path-to-certs>/fullchain.pem,dst=/certs/fullchain.pem,ro \
     --mount type=bind,src=<path-to-certs>/privkey.pem,dst=/certs/privkey.pem,ro \
@@ -163,12 +172,14 @@ docker service create \
     --network=<network> \
     docker.pkg.github.com/weavc/weavc-nginx/weavc-nginx:latest
 ```
-```
+
+```shell
 docker service create \
     --replicas 3 \
     --name <name> \
     --network=<network> \
     <image>:latest
 ```
+
 - [service docs](https://docs.docker.com/engine/reference/commandline/service/)
 - [swarm/services docs](https://docs.docker.com/engine/swarm/services/)

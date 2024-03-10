@@ -29,6 +29,29 @@ a:hover {
     color:lighten($blue-400, 10%);
 }
 
+h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
 code {
     color: $gray-400;
 }
@@ -166,4 +189,4 @@ code {
     &:hover {
       transform: scale(1.05);
     }
-  }  
+}  

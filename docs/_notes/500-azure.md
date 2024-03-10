@@ -5,8 +5,9 @@ tags: ['cloud', 'devops', 'dev']
 icon: cloud
 ---
 
-## Functions
-### `local.settings.json`
+### Functions
+
+#### `local.settings.json`
 ```json
 {
   "IsEncrypted": false,
@@ -24,7 +25,8 @@ icon: cloud
   }
 }
 ```
-### `host.json`
+
+#### `host.json`
 ```json
 {
     "version": "2.0",
@@ -38,7 +40,8 @@ icon: cloud
     }
 }
 ```
-### `Program.cs`
+
+#### `Program.cs`
 ```c#
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -58,7 +61,8 @@ var host = new HostBuilder()
 
 host.Run();
 ```
-### csproj
+
+#### Csproj
 ```c#
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
@@ -98,7 +102,8 @@ host.Run();
 </Project>
 ```
 
-### Function Examples
+
+#### Function Examples
 ```c#
 public class HttpFunctions
 {

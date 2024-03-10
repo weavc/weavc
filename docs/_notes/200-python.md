@@ -5,7 +5,7 @@ tags: ['dev']
 icon: code-slash
 ---
 
-## Configuration examples
+### Configuration examples
 
 ### Project structure:
 ```shell
@@ -82,7 +82,7 @@ recursive = true
 aggressive = 3
 ```
 
-## Extract Images From .har files
+### Extract Images From .har files
 ```python
 #!/usr/bin/env python3
 import json
@@ -109,7 +109,7 @@ for entry in entries:
         f.write(base64.b64decode(b64))
 ```
 
-## Sendgrid API Debugging [Python]
+### Sendgrid API Debugging [Python]
 
 Quick send email api request for sendgrid, helps deugging models and requests etc. For actual sendgrid use, use [Sendgrids python client](https://github.com/sendgrid/sendgrid-python).
 
@@ -154,7 +154,7 @@ print(res)
 print(res.text)
 ```
 
-## SMTP Debug Tool [Python]
+### SMTP Debug Tool [Python]
 
 ```python
 import smtplib, ssl

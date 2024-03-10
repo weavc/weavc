@@ -8,4 +8,4 @@ filter: 'linux'
 
 #### Posts
 
-{% include posts.html %}
+{% include notes.html %}

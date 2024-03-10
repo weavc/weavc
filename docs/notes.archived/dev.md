@@ -8,5 +8,4 @@ filter: 'dev'
 
 #### Posts
 
-{% include posts.html %}
-
+{% include notes.html %}

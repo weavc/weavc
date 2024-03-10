@@ -5,7 +5,7 @@ tags: ['linux', 'server', 'devops']
 icon: terminal
 ---
 
-## Useful Makefile
+### Useful Makefile
 
 ```shell
 # ======== Variables ==========
@@ -161,8 +161,11 @@ sshgen/auth:
 	ssh-import-id gh:weavc
 ```
 
-## Cloud init
+
+### Cloud init
+
 note: The #cloud-config is required.
+
 ```yaml
 #cloud-config
 users:
@@ -182,20 +185,21 @@ packages:
  - docker-compose
 ```
 
-## Setting up a persistant ssh tunnel to a firewalled server
 
-### Tunnel
+### Setting up a persistant ssh tunnel to a firewalled server
+
+#### Tunnel
 
 ```shell
 ssh -g -N -T -o "ExitOnForwardFailure yes" -o "ServerAliveInterval 60" -R <listen on ip>:<listen on port>:localhost:22 <user>@<domain>
 ```
 
-### sshd_config
+#### sshd_config
 ```shell
 GatewayPorts yes
 ```
 
-### `systemd`
+#### `systemd`
 ```ini
 [Unit]
 Description=SSH Tunnel
@@ -211,16 +215,17 @@ ExecStart=/usr/bin/ssh -g -N -T -o "ExitOnForwardFailure yes" -o "ServerAliveInt
 WantedBy=multi-user.target
 ```
 
-## Yubikey configuration
+
+### Yubikey configuration
 
 Yubikey setup, resources and guides
 
-### Useful Commands
+#### Useful Commands
 
 Note: You often have to configure the yubikey do allow certain behaviours and create/setup pins and security credentials before running these commands. All of that can be done with yubikey-manager or `ykman`.
 
 Install packages:
-```
+```shell
 sudo apt-add-repository ppa:yubico/stable
 sudo apt install yubikey-manager libfido2-dev gnupg pcscd scdaemon -y
 ```
@@ -251,43 +256,46 @@ Import Public GPG key:
 curl -fsSL http://www.weav.ovh/weavc@pm.me_pub.gpg | gpg --import
 ```
 
-### Resources
+#### Resources
 
 - [GPG Setup 1](https://www.barrage.net/blog/technology/yubikey-and-gpg)
 - [GPG Setup 2](https://developers.yubico.com/PGP/PGP_Walk-Through.html)
 
-## OpenSSL commands for generating RSA key pair
+
+### OpenSSL commands for generating RSA key pair
 Used in Jwt and other similar things.
 ```shell
 openssl genrsa -out <path>/privkey.pem 4096 && \
 openssl rsa -in <path>/privkey.pem -pubout > <path>/pubkey.pem
 ```
 
-## Samba Network Share on Raspberry Pi
+
+### Samba Network Share on Raspberry Pi
 
 Using [`alexandreroman/rpi-samba`](https://github.com/alexandreroman/rpi-samba)
 
-### Create a directory for the share
+#### Create a directory for the share
 ```
 mkdir [path-to-share]
 ```
 - This will be bind mounted to the docker container
 
-### Clone the repo & build the image
+#### Clone the repo & build the image
 ```
 git clone https://github.com/alexandreroman/rpi-samba.git
 cd rpi-samba
 make
 ```
 
-### Run
+#### Run
 ```
 docker run -d -it --name samba --restart=unless-stopped -v [path-to-share]:/data/share -p 445:445 rpi-samba
 ```
 
-## Luks / Cryptsetup Encrypted USB
 
-### Picking a cipher, mode, hash and key size
+### Luks / Cryptsetup Encrypted USB
+
+#### Picking a cipher, mode, hash and key size
 - Keysize, size does matter here...
 - Whats available & best depends on the system and use case
 - See `/proc/crypto` & `cryptsetup benchmark` for ciphers available 
@@ -297,7 +305,7 @@ docker run -d -it --name samba --restart=unless-stopped -v [path-to-share]:/data
   - [https://unix.stackexchange.com/questions/354787/list-available-methods-of-encryption-for-luks](https://unix.stackexchange.com/questions/354787/list-available-methods-of-encryption-for-luks)
   - [https://superuser.com/questions/271902/system-encryption-luks-whats-the-strongest-and-most-secure-key-size](https://superuser.com/questions/271902/system-encryption-luks-whats-the-strongest-and-most-secure-key-size)
 - Useful extract:
-> ### Valid cipher names
+> #### Valid cipher names
 >```
 >    aes Advanced Encryption Standard - FIPS PUB 197
 >    twofish Twofish: A 128-Bit Block Cipher - https://www.schneier.com/paper-twofish-paper.html
@@ -305,14 +313,14 @@ docker run -d -it --name samba --restart=unless-stopped -v [path-to-share]:/data
 >    cast5 RFC 2144
 >    cast6 RFC 2612
 >```
-> ### Valid cipher modes
+> #### Valid cipher modes
 >```
 >    ecb The cipher output is used directly.
 >    cbc-plain The cipher is operated in CBC mode. 
 >    cbc-essiv:{hash}
 >    xts-plain64 plain64 is 64-bit version of plain initial vector
 >```
-> ### Valid hash specifications
+> #### Valid hash specifications
 >```
 >    sha1 RFC 3174 - US Secure Hash Algorithm 1 (SHA1)
 >    sha256 SHA variant according to FIPS 180-2
@@ -322,7 +330,7 @@ docker run -d -it --name samba --restart=unless-stopped -v [path-to-share]:/data
 
 I ended up going with `aes-xts-plain64`.
 
-### Find where usb is mounted
+#### Find where usb is mounted
 ```bash
 fdisk -h
 
@@ -335,29 +343,29 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
-### Wipe the device
+#### Wipe the device
 ```bash
 umount [/dev/sdb]
 wipefs -a [/dev/sdb]
 ```
 
-### Encrpyt the device
+#### Encrpyt the device
 ```
 cryptsetup -y --cipher [cipher] --key-size [keysize] luksFormat [/dev/sdb]
 ```
 Will be prompted for the password here
 
-### Open
+#### Open
 ```
 cryptsetup luksOpen [/dev/sdb] [some-volume-name]
 ```
 
-### Format
+#### Format
 ```
 sudo mkfs.ext4 /dev/mapper/[some-volume-name] -L [some-volume-name]
 ```
 
-### Close
+#### Close
 ```
 cryptsetup luksClose [volume-name]
 ```

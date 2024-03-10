@@ -3,7 +3,13 @@
 .highlight pre { 
     background-color: $gray-800;
     padding: 1rem;
+    margin-bottom: 0;
 }
+
+.language-plaintext {
+    margin: 0 !important;
+}
+
 .highlighter-rouge { 
     background-color: $gray-700;
     padding-left: 0.3rem;
@@ -11,6 +17,7 @@
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
     border-radius: 0.3rem;
+    margin: 1rem;
 }
 .highlight .hll { background-color: $gray-800; }
 .highlight .c { color: #75715e } /* Comment */

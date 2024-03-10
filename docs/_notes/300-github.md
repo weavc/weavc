@@ -2,12 +2,12 @@
 layout: post
 title: Github
 tags: ['dev', 'devops', 'git']
-icon: code-slash
+icon: github
 ---
 
-## Actions
+### Actions
 
-### Dotnet build and push container
+#### Dotnet build and push container
 ```yaml
 name: Docker CI - Identity
 
@@ -41,7 +41,7 @@ jobs:
       run: docker push registry.digitalocean.com/checkout-dev/identity
 ```
 
-### Go build and test
+#### Go build and test
 ```yaml
 name: Go build and test
 
@@ -70,7 +70,7 @@ jobs:
 
 ```
 
-### Python poetry build and test
+#### Python poetry build and test
 ```yaml
 name: Python package
 
@@ -112,7 +112,7 @@ jobs:
         pytest test
 ```
 
-### Python poetry publish
+#### Python poetry publish
 ```yaml
 name: Upload Python Package
 

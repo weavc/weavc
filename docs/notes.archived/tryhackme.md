@@ -8,4 +8,4 @@ filter: 'thm'
 
 #### Posts
 
-{% include posts.html %}
+{% include notes.html %}

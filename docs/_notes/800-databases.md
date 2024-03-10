@@ -2,15 +2,15 @@
 layout: post
 title: Databases
 tags: ['databases', 'devops']
-icon: database
+icon: server
 ---
 
-## Postgres replications
+### Postgres replications
 Note: this is incomplete.
 
 As part of `weavc/deploy-examples`, I looked into setting up a PostgreSQL database that would run on Docker swarm with hot swappable replica sets over multiple nodes. 
 
-### Docker Compose
+#### Docker Compose
 
 ```yaml
 version: "3.8"
@@ -97,7 +97,7 @@ volumes:
   postgres-replica:
 ```
 
-### Scripts
+#### Scripts
 
 `10-replication-restore.sh`
 ```bash
@@ -122,7 +122,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
 EOSQL
 ```
 
-### Configuration
+#### Configuration
 
 `pg_hba.conf`
 ```
@@ -147,7 +147,7 @@ max_replication_slots = 10
 hot_standby_feedback = on
 ```
 
-### Resources
+#### Resources
 
 - [https://github.com/docker-library/docs/blob/master/postgres/README.md](https://github.com/docker-library/docs/blob/master/postgres/README.md)
 - [https://medium.com/swlh/postgresql-replication-with-docker-c6a904becf77](https://medium.com/swlh/postgresql-replication-with-docker-c6a904becf77)

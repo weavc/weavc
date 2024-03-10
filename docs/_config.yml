@@ -13,13 +13,15 @@ collections:
         name: projects
         output: true
         permalink: "/projects/:path"
+    notes:
+        name: notes
+        output: true
+        permalink: "/notes/:path"
 kramdown:
     syntax_highlighter_opts:
         line_numbers: false
         tab_width: 2
         css: class
-imagesurl: "/assets/gallery/imgs/"
-thumbsurl: "/assets/gallery/thumbs/"
 repository: weavc/weavc
 url: "https://www.weav.ovh"
 plugins:

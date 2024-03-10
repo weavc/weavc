@@ -2,10 +2,10 @@
 layout: post
 title: Terraform
 tags: ['devops', 'server', 'cloud']
-icon: server
+icon: bar-chart-steps
 ---
 
-## Digital Ocean App Platform
+### Digital Ocean App Platform
 
 ```terraform
 resource "digitalocean_certificate" "do_cert" {
@@ -70,9 +70,10 @@ resource "digitalocean_app" "aagy_app" {
 }
 ```
 
-## Docker Registry
 
-```
+### Docker Registry
+
+```terraform
 resource "digitalocean_container_registry_docker_credentials" "aagy_registry_docker_credentials" {
   registry_name = "aagy-registry"
   write = true
@@ -102,8 +103,10 @@ resource "docker_image" "aagy" {
 }
 ```
 
-## Digital Ocean Droplet
-```
+
+### Digital Ocean Droplet
+
+```terraform
 terraform {
   required_providers {
     digitalocean = {

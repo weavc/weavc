@@ -5,15 +5,17 @@ tags: ['dev']
 icon: code-slash
 ---
 
-## Useful Notes
+### Useful Notes
+
 Add all projects to sln:
 ```shell
 dotnet sln add ./**/*.csproj
 ```
 
-## Enitity Framework:
+
+### Enitity Framework
  
-### Setup
+#### Setup
 ```shell
 dotnet add package Microsoft.EntityFrameworkCore --version=8.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version=8.0.2
@@ -31,7 +33,8 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 });
 ```
 
-### Useful Makefile:
+#### Useful Makefile
+
 ```shell
 MIGRATION_NAME ?= $(shell bash -c 'read -p "Migration name > " migration_name; echo $$migration_name')
 PROJECT = <project>/
@@ -55,7 +58,8 @@ migration.restore:
 	make migration.restore_snapshot && migration.restore_migrations
 ```
 
-## Configutation for reusable packages
+### Configutation for reusable packages
+
 ```c#
 public static IServiceCollection AddStorage(this IServiceCollection sc, Action<StorageOptions> configure)
 {
@@ -103,6 +107,7 @@ public static IServiceCollection AddStorage(this IServiceCollection sc, Action<S
 }
 ```
 
+
 ### Usage in `Program.cs`
 
 Binding to configuration i.e. `appsettings.json`:
@@ -125,7 +130,8 @@ builder.Services.AddStorage(configure =>
 });
 ```
 
-## Custom lifetime validation
+
+### Custom lifetime validation
 Workaround for: [AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/issues/92](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/issues/92)
 
 There is currently an issue with the default lifetime validation for a token, where if the token expires after `19/01/2038 12:00:00 AM` it overflows the `int` value causing the `DateTime` recieved by the default `LifetimeValidatier` to be `null`.
@@ -157,9 +163,10 @@ The following is a custom `LifetimeValidator` method that can be used in `TokenV
     }
 ```
 
-## Helpers
 
-### Add paging to queryable:
+### Helpers
+
+#### Add paging to queryable:
 ```c#
 public static class PagingExtensions
 {
@@ -188,7 +195,7 @@ public static class PagingExtensions
 }
 ```
 
-### Json Http Helpers
+#### Json Http Helpers
 
 ```c#
 public class JsonHttpHandler
@@ -232,7 +239,8 @@ public class JsonHttpHandler
 }
 ```
 
-## Minimal Apis
+
+### Minimal Apis
 Really great for creating apis for minimal packages. 
 ```c#
 public static void MapTasksEndpoints(this IEndpointRouteBuilder endpoints)
@@ -264,7 +272,7 @@ public static void MapTasksEndpoints(this IEndpointRouteBuilder endpoints)
 ```
 
 
-## Github actions publish nuget
+### Github actions publish nuget
 ```yml
 name: Dotnet Publish Package
 
@@ -304,7 +312,8 @@ jobs:
 		--api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 ```
 
-## Configure a service at runtime in code:
+
+### Configure a service at runtime in code:
 ```c#
 public static class ConfigureServices
 {
@@ -332,9 +341,10 @@ public static class ConfigureServices
 }
 ```
 
-## Custom Csv Parser
 
-### Interface:
+### Custom Csv Parser
+
+#### Interface:
 ```c#
 public interface ICsvParser
 {
@@ -342,7 +352,7 @@ public interface ICsvParser
 }
 ```
 
-### Attribute:
+#### Attribute:
 ```c#
 [AttributeUsage(AttributeTargets.Property)]
 public class CsvParserAttribute(string name) : Attribute
@@ -351,7 +361,7 @@ public class CsvParserAttribute(string name) : Attribute
 }
 ```
 
-### Configuration:
+#### Configuration:
 ```c#
 public record CsvParserConfig(
     string[]? Headers = null, 
@@ -360,7 +370,8 @@ public record CsvParserConfig(
     bool IncludesHeaders = true);
 ```
 
-### Type mapping:
+
+#### Type mapping:
 ```c#
 public delegate T CsvMapper<out T>(IEnumerable<KeyValuePair<string, string?>> model);
 
@@ -416,7 +427,8 @@ public static class DefaultCsvParserAttributeMapping
 }
 ```
 
-### Parser:
+
+#### Parser:
 ```c#
 public class DefaultCsvParser : ICsvParser
 {
@@ -494,7 +506,8 @@ public class DefaultCsvParser : ICsvParser
 }
 ```
 
-## Example Pbkdf2 for password hashing & verification:
+
+### Example Pbkdf2 for password hashing & verification:
 
 ```c#
 public class Pbkdf2HashingProvider : IHashingProvider

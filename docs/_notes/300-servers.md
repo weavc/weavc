@@ -5,7 +5,7 @@ tags: ['devops', 'server', 'cloud']
 icon: server
 ---
 
-## File Servers
+### File Servers
 Basic file server:
 ```bash
 python3 -m http.server
@@ -19,7 +19,8 @@ updog [-d DIRECTORY] [-p PORT] [--password PASSWORD] [--ssl]
 updog -d . -p 8080 --ssl
 ```
 
-## Dev servers
+
+### Dev servers
 
 Flask:
 ```python
@@ -56,7 +57,8 @@ func main() {
 }
 ```
 
-## Docker
+
+### Docker
 
 Nginx:
 ```bash
@@ -64,16 +66,17 @@ docker run -it --rm -p 8080:80 nginx
 docker run -it --rm -p 8080:80 -v <path_to_local_config>:/etc/nginx/nginx.conf:ro -v <path_to_local_website_files>:/usr/share/nginx/html:ro nginx
 ```
 
-## Wildcard SSL With Certbot / LetsEncrypt
 
-### Install certbot & dns plugin
+### Wildcard SSL With Certbot / LetsEncrypt
+
+#### Install certbot & dns plugin
 ```
 pip3 install certbot
 pip3 install certbot-dns-ovh
 ```
 add `~/.local/bin` to path if its not already
 
-### OVH App
+#### OVH App
 Create new app: https://eu.api.ovh.com/createApp/
 
 Generate consumer key:

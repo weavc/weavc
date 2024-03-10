@@ -1,10 +1,8 @@
 <div class="container-fluid content-row">
   <div class="row">
     <ul class="list-group w-100">
-      {% assign items = site.posts %}
+      {% assign items = site.notes %}
       {%- for p in items %}
-      {% if p.categories contains 'notes' %}
-      {% if p.terms contains page.filter or page.filter == nil %}
       <li class="bg-1 list-group-item d-flex justify-content-between align-items-center">
         <span class="text-start text-light text-decoration-none">
           {% if p.icon != nil %}<span><i class="bi bi-{{p.icon}}"></i>&nbsp;</span>{% endif %}
@@ -16,8 +14,6 @@
           </a>
         </div>
       </li>
-      {% endif %}
-      {% endif %}
       {% endfor -%}
     </ul>
   </div>
