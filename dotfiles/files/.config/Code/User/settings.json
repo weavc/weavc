@@ -1,0 +1,117 @@
+{
+    "files.simpleDialog.enable": true,
+    "workbench.editor.showTabs": "single",
+    "workbench.iconTheme": "vscode-icons",
+    "window.restoreWindows": "none",
+    "editor.minimap.enabled": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "yaml.customTags": [
+        "!encrypted/pkcs1-oaep scalar",
+        "!vault scalar"
+    ],
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow": "/.github/workflows/**/*.yml"
+    },
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.profiles.linux": {
+        "bash (migrated)": {
+            "path": "bash",
+            "args": []
+        },
+        "/bin/bash (migrated)": {
+            "path": "/bin/bash",
+            "args": []
+        }
+    },
+    "notebook.breadcrumbs.showCodeCells": false,
+    "coverage-gutters.coverageFileNames": [
+        "lcov.info",
+        "cov.xml",
+        "coverage.xml",
+        "coverage.json",
+        "jacoco.xml"
+    ],
+    "terminal.integrated.fontFamily": "monospace",
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": "{{put-password-here}}"
+        }
+    ],
+    "go.toolsManagement.autoUpdate": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "remote.SSH.remotePlatform": {
+        "dev": "linux"
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "org.todoKeywords": [
+        "TODO",
+        "PROG",
+        "PULR",
+        "DONE",
+        "HOLD"
+    ],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": true,
+        "csharp": true
+    },
+    "files.associations": {
+        "*.templ": "templ"
+    },
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "editor.cursorStyle": "block",
+    "security.workspace.trust.untrustedFiles": "open",
+    "settingsSync.ignoredExtensions": [
+        
+    ],
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Ubuntu-22.04 (WSL)": {
+            "path": "C:\\WINDOWS\\System32\\wsl.exe",
+            "args": [
+                "-d",
+                "Ubuntu-22.04"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Ubuntu-22.04 (WSL)",
+    "markdown-pdf.displayHeaderFooter": false,
+    "markdown-pdf.scale": 0.8
+}
