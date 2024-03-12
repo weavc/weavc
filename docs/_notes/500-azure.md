@@ -16,13 +16,8 @@ icon: cloud
     "AzureWebJobs.FileScan.Disabled": false,
     "AzureWebJobs.FileAnalysis.Disabled": false,
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "Azure:FileAnalysisMq": "asset-analysis",
-    "Azure:FileScanMq": "asset-scan",
-    "VirusTotal:ApiKey": "f1447d364dfc3776b959377906515e80501530de9370da47d6958cbaaee75113",
-    "SGW5D:ApiKey": "VkVyN0NHRWg1NEc0andndk5IODI4RkFiQUtqTjdGNTVBN2ZpYXhnVnlUUXdMQ01hdENyUHZ3TDNBclFWWjJQdA==",
-    "SGW5D:BaseUrl": "http://localhost:57912/",
-    "Cloudmersive:ApiKey": "bc19e243-3eea-4272-89a0-c7b36384397d"
-  }
+    "Azure:FileAnalysisMq": "asset-analysis"
+    }
 }
 ```
 
