@@ -1,61 +1,22 @@
 ---
 layout: post
 title: Dotnet
+sort_key: 1
 tags: ['dev']
 icon: code-slash
 ---
+
+### Other notes
+
+{% include notes.html set="dotnet" %}
+
+<hr/>
 
 ### Useful Notes
 
 Add all projects to sln:
 ```shell
 dotnet sln add ./**/*.csproj
-```
-
-
-### Enitity Framework
- 
-#### Setup
-```shell
-dotnet add package Microsoft.EntityFrameworkCore --version=8.0.2
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version=8.0.2
-```
-
-```c#
-public class AppDbContext(DbContextOptions<UserDbContext> options) : DbContext(options)
-{
-    public DbSet<User> Users { get; set; }
-}
-
-// usage:
-builder.Services.AddDbContext<AppDbContext>(options => {
-    options.UseSqlServer("Server=localhost,1483;Database=users;User=sa;Password=<password>;TrustServerCertificate=True;");
-});
-```
-
-#### Useful Makefile
-
-```shell
-MIGRATION_NAME ?= $(shell bash -c 'read -p "Migration name > " migration_name; echo $$migration_name')
-PROJECT = <project>/
-STARTUP_PROJECT = <project>/
-DBCONTEXT = <name>
-RESTORE_TO = <branch target>
-
-migration.add:
-	dotnet ef migrations add $(MIGRATION_NAME) --project $(PROJECT) --startup-project $(STARTUP_PROJECT)
-	
-migration.script: 
-	dotnet ef migrations script --project $(PROJECT) --startup-project $(STARTUP_PROJECT) --output  $(shell bash -c 'date +%s')_migration.sql --idempotent
-
-migration.restore_snapshot:
-	git restore --source $(RESTORE_TO) -- $(PROJECT)/Migrations/$(DBCONTEXT)ModelSnapshot.cs
-
-migration.restore_migrations:
-	git restore --source $(RESTORE_TO) -- $(PROJECT)Migrations/
-
-migration.restore:
-	make migration.restore_snapshot && migration.restore_migrations
 ```
 
 ### Configutation for reusable packages
@@ -130,43 +91,9 @@ builder.Services.AddStorage(configure =>
 });
 ```
 
-
-### Custom lifetime validation
-Workaround for: [AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/issues/92](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/issues/92)
-
-There is currently an issue with the default lifetime validation for a token, where if the token expires after `19/01/2038 12:00:00 AM` it overflows the `int` value causing the `DateTime` recieved by the default `LifetimeValidatier` to be `null`.
-
-The following is a custom `LifetimeValidator` method that can be used in `TokenValidationParameters`. It resolves the issue by wrapping the default `LifetimeValidator` provided in `Microsoft.IdentityModel.Tokens` and using the `ValidTo` property on the Security Token passed to the method if the criteria is met.
-
-```c#
-    public bool CustomLifetimeValidator(
-        DateTime? notBefore, 
-        DateTime? expires, 
-        SecurityToken securityToken, 
-        TokenValidationParameters validationParameters)
-    {
-        if (!expires.HasValue && validationParameters.RequireExpirationTime)
-        {
-            var overflowDate = DateTimeOffset.FromUnixTimeSeconds(int.MaxValue).DateTime;
-            if (securityToken is not null && securityToken.ValidTo >= overflowDate)
-                expires = securityToken.ValidTo;
-        }
-        
-        // Prevents validation loop
-        var newParameters = validationParameters.Clone();
-        newParameters.LifetimeValidator = null;
-        
-        // Use the default validation logic with the new expiry time
-        Validators.ValidateLifetime(notBefore, expires, securityToken, newParameters);
-
-        return true;
-    }
-```
-
-
 ### Helpers
 
-#### Add paging to queryable:
+#### Add paging to queryable
 ```c#
 public static class PagingExtensions
 {
@@ -240,38 +167,6 @@ public class JsonHttpHandler
 ```
 
 
-### Minimal Apis
-Really great for creating apis for minimal packages. 
-```c#
-public static void MapTasksEndpoints(this IEndpointRouteBuilder endpoints)
-{
-    var group = endpoints.MapGroup("/tasks");
-
-    group.MapGet("", Task<Ok<string[]>> (HttpContext context, [FromServices] IServiceProvider sp) =>
-    {   
-        sp.GetRequiredService<ILogger<...>>().LogInformation("Getting all tasks");
-
-        var result = TypedResults.Ok<string[]>(["task 1", "task 2"]);
-        return Task.FromResult(result);
-    });
-
-    group.MapPost("{id:int}", async Task<Results<Ok, ValidationProblem>> (
-        HttpContext context, 
-        [FromRoute] int id, 
-        [FromBody] Task task,
-        [FromServices] IServiceProvider sp) =>
-    {   
-        if (!await task.IsValid())
-            return Task.FromResult(TypedResults.ValidationProblem(...));
-
-        Results<Ok, ValidationProblem> result = TypedResults.Ok();
-        return result;
-    }).RequireAuthorization()
-    .WithTags("tasks");
-}
-```
-
-
 ### Github actions publish nuget
 ```yml
 name: Dotnet Publish Package
@@ -313,7 +208,7 @@ jobs:
 ```
 
 
-### Configure a service at runtime in code:
+### Configure a service at runtime in code
 ```c#
 public static class ConfigureServices
 {
@@ -340,172 +235,6 @@ public static class ConfigureServices
     }
 }
 ```
-
-
-### Custom Csv Parser
-
-#### Interface:
-```c#
-public interface ICsvParser
-{
-    IEnumerable<T> Parse<T>(string csv, CsvMapper<T> mapper, CsvParserConfig config);
-}
-```
-
-#### Attribute:
-```c#
-[AttributeUsage(AttributeTargets.Property)]
-public class CsvParserAttribute(string name) : Attribute
-{
-    public string Name { get; } = name;
-}
-```
-
-#### Configuration:
-```c#
-public record CsvParserConfig(
-    string[]? Headers = null, 
-    string[]? RequiredHeaders = null, 
-    char SeperatorCharacter = ',', 
-    bool IncludesHeaders = true);
-```
-
-
-#### Type mapping:
-```c#
-public delegate T CsvMapper<out T>(IEnumerable<KeyValuePair<string, string?>> model);
-
-public static class DefaultCsvParserAttributeMapping
-{
-    public static T DefaultCsvMapper<T>(
-        IEnumerable<KeyValuePair<string, string>> model) 
-        where T : new()
-    {
-        var l = model.ToList();
-
-        var result = new T();
-        var t = typeof(T);
-        var props = t.GetProperties();
-        foreach (var prop in props)
-        {
-            foreach (var attr in prop.GetCustomAttributes(true))
-            {
-                if (attr is CsvParserAttribute)
-                {
-                    var key = ((CsvParserAttribute) attr).Name;
-                    var value = l.FirstOrDefault(s => s.Key == key).Value;
-
-                    if (prop.PropertyType == typeof(string))
-                    {
-                        prop.SetValue(result, value?.Trim());
-                    }
-                    else if (prop.PropertyType == typeof(decimal))
-                    {
-                        _ = decimal.TryParse(value?.Trim(), out decimal decValue);
-                        prop.SetValue(result, decValue);
-                    }
-                    else if (prop.PropertyType == typeof(double))
-                    {
-                        _ = double.TryParse(value?.Trim(), out double doubValue);
-                        prop.SetValue(result, doubValue);
-                    }
-                    else if (prop.PropertyType == typeof(int))
-                    {
-                        _ = int.TryParse(value?.Trim(), out int intValue);
-                        prop.SetValue(result, intValue);
-                    }
-                    else if (prop.PropertyType == typeof(int?))
-                    {
-                        _ = int.TryParse(value?.Trim(), out int intValue);
-                        prop.SetValue(result, intValue);
-                    }                    
-                }
-            }
-        }
-        return result;
-    }
-}
-```
-
-
-#### Parser:
-```c#
-public class DefaultCsvParser : ICsvParser
-{
-    public IEnumerable<T> Parse<T>(string csv, CsvMapper<T> mapper, CsvParserConfig config)
-    {
-        var lines = csv.Split("\n");
-        var headers = config.Headers;
-            
-        if (config.IncludesHeaders && headers.IsNullOrEmpty())
-            yield break;
-
-        for(var i = 0; i < lines.Length; i++)
-        {
-            var line = lines[i];
-            if (string.IsNullOrWhiteSpace(line))
-                continue;
-                
-            var rowData = line.Split(config.SeperatorCharacter).ToArray();
-                
-            if (config.IncludesHeaders && i == 0 && headers.IsNullOrEmpty())
-            {  
-                headers = ParseHeaders(rowData, config.RequiredHeaders);
-                continue;
-            }
-
-            if (headers.IsNullOrEmpty())
-                yield break;
-
-            yield return ParseRow(rowData, mapper, headers!);
-        }
-    }
-        
-    private T ParseRow<T>(IReadOnlyList<string> csvRow, CsvMapper<T> mapper, string[] headers)
-    {
-        var rowData = new List<KeyValuePair<string, string?>>();
-        foreach(var header in headers)
-        {
-            int index = Array.IndexOf(headers, header);
-            if (index >= csvRow.Count)
-            {
-                rowData.Add(new KeyValuePair<string, string?>(header, null));
-                continue;
-            }
-
-            rowData.Add(new KeyValuePair<string, string?>(header, csvRow[index]));
-        }
-
-        return mapper(rowData);
-    }
-
-    private string[] ParseHeaders(string[]? csvRow, string[]? required)
-    {
-        if (csvRow == null)
-            return [];
-
-        required ??= [];
-
-        var headers = new List<string>();
-
-        foreach (var header in csvRow)
-            headers.Add(header.ToLower());
-
-        var missing = new List<string>();
-        foreach (var req in required)
-        {
-            if (!headers.Contains(req.ToLower()))
-                missing.Add(req);
-        }
-
-        if (missing.Count > 0)
-            throw new Exception($"Missing required headers: {string.Join(", ", [.. missing])}");
-
-        return [.. headers];
-    }
-}
-```
-
 
 ### Example Pbkdf2 for password hashing & verification:
 
@@ -551,112 +280,5 @@ public class Pbkdf2HashingProvider : IHashingProvider
 
         return true;
     }
-}
-```
-
-### Microsoft.FeatureManagement
-
-See: [use-feature-flags-dotnet-core](https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-feature-flags-dotnet-core)
-
-```shell
-dotnet add package Microsoft.FeatureManagement
-dotnet add package Microsoft.FeatureManagement.AspNetCore
-```
-
-#### Filter on specific claims
-```c#
-public class ClaimsTargettingContextAccessor : ITargetingContextAccessor, IFeatureFilterMetadata
-{
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    
-    private const string TargetingContextLookup = "HttpContextAccessor.TargetingContext";
-    
-    private static readonly List<string> ValidGroups = new()
-    { 
-        "TenantId"
-    };
-
-    public ClaimsTargettingContextAccessor(IHttpContextAccessor httpContextAccessor = null)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
-
-    public ValueTask<TargetingContext> GetContextAsync()
-    {
-        // This method checks for cached groups already attached to the HttpContext,
-        // If they don't exist then we look for valid claims and adds them to the targetting context.
-
-        if (_httpContextAccessor is null)
-            return new ValueTask<TargetingContext>(new TargetingContext());
- 
-        var httpContext = _httpContextAccessor.HttpContext;
-        if (httpContext.Items.TryGetValue(TargetingContextLookup, out object value))
-            return new ValueTask<TargetingContext>((TargetingContext)value);
-
-        var groups = httpContext.User.Claims
-            .Where(c => ValidGroups.Contains(claim.Type))
-            .Select(c => $"{c.Type}:{c.Value}")
-            .ToArray();
-
-        TargetingContext targetingContext = new()
-        {
-            UserId = user.Identity.Name,
-            Groups = groups
-        };
-
-        httpContext.Items[TargetingContextLookup] = targetingContext;
-
-        return new ValueTask<TargetingContext>(targetingContext);
-    }
-}
-```
-
-```c#
-builder.Services.AddFeatureManagement()
-                .WithTargeting<ClaimsTargettingContextAccessor>();
-```
-
-### Authorization
-
-#### TenantId Attribute
-```c#
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-public class TenantIdAttribute : AuthorizeAttribute, IAuthorizationFilter
-{
-    private readonly string[] _ids;
-    public TenantIdAttribute(params string[] validIds)
-    {
-        _ids = validIds;
-    }
-
-    public void OnAuthorization(AuthorizationFilterContext context)
-    {
-        var user = context.HttpContext.User;
-        if (!user.Identity.IsAuthenticated)
-        {
-            context.Result = new ForbidResult();
-            return;
-        }
-
-        foreach(var claim in _ids)
-        {
-            if(user.HasClaim("TenantId", claim.ToString()))
-                return;
-        }
-
-        context.Result = new ForbidResult();
-    }
-}
-```
-
-```
-[TenantId("c34c8a15-a93f-41c9-9325-35f20811651e")]
-[Authorize]
-[HttpGet]
-[Route("results")]
-public IActionResult GetResults()
-{
-    ...
-    return Ok();
 }
 ```

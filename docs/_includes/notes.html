@@ -3,6 +3,7 @@
     <ul class="list-group w-100">
       {% assign items = site.notes %}
       {%- for p in items %}
+      {% if p.set == include.set %}
       <li class="bg-1 list-group-item d-flex justify-content-between align-items-center">
         <span class="text-start text-light text-decoration-none">
           {% if p.icon != nil %}<span><i class="bi bi-{{p.icon}}"></i>&nbsp;</span>{% endif %}
@@ -14,6 +15,7 @@
           </a>
         </div>
       </li>
+      {% endif %}
       {% endfor -%}
     </ul>
   </div>
