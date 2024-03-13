@@ -553,3 +553,110 @@ public class Pbkdf2HashingProvider : IHashingProvider
     }
 }
 ```
+
+### Microsoft.FeatureManagement
+
+See: [use-feature-flags-dotnet-core](https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-feature-flags-dotnet-core)
+
+```shell
+dotnet add package Microsoft.FeatureManagement
+dotnet add package Microsoft.FeatureManagement.AspNetCore
+```
+
+#### Filter on specific claims
+```c#
+public class ClaimsTargettingContextAccessor : ITargetingContextAccessor, IFeatureFilterMetadata
+{
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    
+    private const string TargetingContextLookup = "HttpContextAccessor.TargetingContext";
+    
+    private static readonly List<string> ValidGroups = new()
+    { 
+        "TenantId"
+    };
+
+    public ClaimsTargettingContextAccessor(IHttpContextAccessor httpContextAccessor = null)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    public ValueTask<TargetingContext> GetContextAsync()
+    {
+        // This method checks for cached groups already attached to the HttpContext,
+        // If they don't exist then we look for valid claims and adds them to the targetting context.
+
+        if (_httpContextAccessor is null)
+            return new ValueTask<TargetingContext>(new TargetingContext());
+ 
+        var httpContext = _httpContextAccessor.HttpContext;
+        if (httpContext.Items.TryGetValue(TargetingContextLookup, out object value))
+            return new ValueTask<TargetingContext>((TargetingContext)value);
+
+        var groups = httpContext.User.Claims
+            .Where(c => ValidGroups.Contains(claim.Type))
+            .Select(c => $"{c.Type}:{c.Value}")
+            .ToArray();
+
+        TargetingContext targetingContext = new()
+        {
+            UserId = user.Identity.Name,
+            Groups = groups
+        };
+
+        httpContext.Items[TargetingContextLookup] = targetingContext;
+
+        return new ValueTask<TargetingContext>(targetingContext);
+    }
+}
+```
+
+```c#
+builder.Services.AddFeatureManagement()
+                .WithTargeting<ClaimsTargettingContextAccessor>();
+```
+
+### Authorization
+
+#### TenantId Attribute
+```c#
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+public class TenantIdAttribute : AuthorizeAttribute, IAuthorizationFilter
+{
+    private readonly string[] _ids;
+    public TenantIdAttribute(params string[] validIds)
+    {
+        _ids = validIds;
+    }
+
+    public void OnAuthorization(AuthorizationFilterContext context)
+    {
+        var user = context.HttpContext.User;
+        if (!user.Identity.IsAuthenticated)
+        {
+            context.Result = new ForbidResult();
+            return;
+        }
+
+        foreach(var claim in _ids)
+        {
+            if(user.HasClaim("TenantId", claim.ToString()))
+                return;
+        }
+
+        context.Result = new ForbidResult();
+    }
+}
+```
+
+```
+[TenantId("c34c8a15-a93f-41c9-9325-35f20811651e")]
+[Authorize]
+[HttpGet]
+[Route("results")]
+public IActionResult GetResults()
+{
+    ...
+    return Ok();
+}
+```
