@@ -88,6 +88,10 @@ install/fish:
 	sudo apt update
 	sudo apt install -y fish
 	chsh -s /usr/bin/fish
+
+## install/fish: Installs fish.
+.PHONY: install/fish
+install/fisher:
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 ## install/python: Installs python.
