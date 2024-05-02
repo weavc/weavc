@@ -152,4 +152,5 @@ sshgen/ed25519:
 ## sshgen/auth: Import authorized keys from github.
 .PHONY: sshgen/auth
 sshgen/auth:
+	sudo apt install ssh-import-id -y
 	ssh-import-id gh:weavc
