@@ -7,4 +7,6 @@ if status is-interactive
     if not test -e $HOME/.config/fish/functions/fisher.fish
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
     end
+
+    set -gx GOPATH $HOME/.local/go
 end
