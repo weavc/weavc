@@ -2,7 +2,7 @@
 layout: post
 title: MongoDb
 tags: ['dev', 'web']
-icon: globe
+icon: server
 set: dotnet
 ---
 
@@ -113,4 +113,4 @@ testdb> db.mongotestdocuments.find()
 ]
 ```
 
-We can see that the Data property is always populated with the time `00:00:00.000Z` of the day the the datetime was set to no matter what date type kind we pass to mongo.
+We can see that the `Date` property is always populated with the day of the datetime and the time set to `00:00:00.000Z` no matter what datekind we pass to mongo. 
