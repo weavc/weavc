@@ -282,3 +282,50 @@ public class Pbkdf2HashingProvider : IHashingProvider
     }
 }
 ```
+
+### Examaple string with extra properties using implict operators and type conversion
+
+```csharp
+[TypeConverter(typeof(ServiceBusConnectionTypeConverter))]
+public class ServiceBusConnection()
+{
+    string _connection = string.Empty;
+
+    internal ServiceBusConnection(string connection) : this()
+    {
+        _connection = connection;
+    }
+
+    public static implicit operator ServiceBusConnection(string connection) =>  new ServiceBusConnection(connection);
+
+    public static implicit operator string(ServiceBusConnection connection) => connection.ConnectionString;
+
+    public string ConnectionString => IsNamespace ? FullyQualifiedNamespace : _connection;
+
+    public string FullyQualifiedNamespace { get; init; } = string.Empty;
+
+    public bool IsNamespace => !string.IsNullOrEmpty(FullyQualifiedNamespace);
+
+    public override string ToString() => ConnectionString;
+}
+
+internal class ServiceBusConnectionTypeConverter : TypeConverter
+{
+    public override bool CanConvertFrom(ITypeDescriptorContext? context, Type sourceType)
+    {
+        if (sourceType == typeof(string))
+            return true;
+
+        return base.CanConvertFrom(context, sourceType);
+    }
+
+    public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object value)
+    {
+        if (value is string)
+            return new ServiceBusConnection(value.ToString()!);
+
+        return base.ConvertFrom(context, culture, value);
+    }
+}
+
+```
