@@ -61,6 +61,18 @@ setup/wsl: mkdirs sshgen/auth sshgen/rsa sshgen/ed25519 install/basics install/f
 .PHONY: setup/server/tmp/go-install-make.tar.gz
 setup/server: mkdirs sshgen/auth sshgen/ed25519 install/basics install/fish install/docker install/python dotfiles/apply
 
+## setup/popkeybinds: Setup pop keybindings
+.PHONY: setup/popkeybinds
+setup/popkeybinds:
+	dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>Home', '<Super>1']"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"
+	dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-1 "['<Shift><Super>Home', '<Shift><Super>exclam']"
+	dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-2 "['<Shift><Super>quotedbl']"
+	dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-3 "['<Shift><Super>sterling']"
+	dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-4 "['<Shift><Super>dollar']"
+
 # ======== Dotfiles ==========
 
 ## dotfiles/apply: Apply the dotfiles using stow.
@@ -90,7 +102,7 @@ install/fish:
 	chsh -s /usr/bin/fish
 
 ## install/fish: Installs fish.
-.PHONY: install/fish
+.PHONY: install/fisher
 install/fisher:
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
