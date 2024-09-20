@@ -113,5 +113,44 @@
     },
     "terminal.integrated.defaultProfile.windows": "Ubuntu-22.04 (WSL)",
     "markdown-pdf.displayHeaderFooter": false,
-    "markdown-pdf.scale": 0.8
+    "markdown-pdf.scale": 0.8,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.autoindent": true,
+    "vim.ignorecase": true,
+    "vim.insertModeKeyBindings": [],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["'"],
+        "commands":["editor.action.showHover"]
+      },  
+      {
+        "before": ["g", "i"],
+        "commands":["workbench.action.goToImplementation"]
+      },
+      {
+        "before": ["g", "r"],
+        "commands":["workbench.action.goToReferences"]
+      },
+      {
+        "before": ["g", "s"],
+        "commands":["workbench.action.gotoSymbol"]
+      },
+      {
+        "before": ["g", "e"],
+        "commands": ["editor.action.marker.next"]
+      },
+      {
+        "before": ["g", "t"],
+        "commands": ["editor.action.goToTypeDefinition"]
+      },
+      {
+        "before": ["<leader>", "p"],
+        "commands":["workbench.action.showCommands"]
+      },
+    ],
+    "vim.leader": "\\"
 }
