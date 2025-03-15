@@ -1,3 +1,32 @@
 [user]
-name = chris
-email = weavc@pm.me
+	name = chris
+	email = weavc@pm.me
+
+[core]
+	excludeFiles = ~/.gitignore
+	editor = nvim
+
+[branch]
+	sort = -committerdate
+
+[pull]
+	rebase = false
+
+[merge]
+	conflictstyle = zdiff3
+	tool = nvimdiff
+
+[rebase]
+	autosquash = true
+	autostash = true
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[rerere]
+	enabled = true
+
+[diff]
+	algorithm = histogram
+
