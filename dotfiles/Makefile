@@ -1,5 +1,5 @@
 # ======== Variables ==========
-VERSIONS_GO := 1.21.8
+VERSIONS_GO := 1.23.1
 VERSIONS_PYTHON := 3
 VERSIONS_DOTNET := 8.0
 VERSIONS_NODE := 18

@@ -199,6 +199,11 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 },
 {
+    "key": "escape",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "!editorFocus" 
+},
+{
     "key": "alt+c f",
     "command": "workbench.action.focusFirstEditorGroup"
 },

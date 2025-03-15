@@ -79,6 +79,7 @@
     "files.associations": {
         "*.templ": "templ"
     },
+<<<<<<< HEAD
     "window.titleBarStyle": "custom",
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
@@ -153,4 +154,78 @@
       },
     ],
     "vim.leader": "\\"
+=======
+    {
+      "before": ["g", "shift+r"],
+      "commands":["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands":["editor.action.goToReferences"]
+    },
+    {
+      "before": ["g", "s"],
+      "commands":["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["g", "e"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["g", "t"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands":["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands":["editor.debug.action.toggleBreakpoint"]
+    }, 
+    {
+      "before": ["<leader>", "b"],
+      "commands":["editor.debug.action.toggleBreakpoint"]
+    },     
+    {
+      "before": ["<leader>", "shift+d"],
+      "commands":["workbench.action.debug.stop"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands":["workbench.action.debug.start"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands":["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands":["workbench.files.action.focusFilesExplorer"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands":["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "c", "r"],
+      "commands":["editor.action.refactor"]
+    },
+    {
+      "before": ["<leader>", "c", "f"],
+      "commands":["editor.action.formatSelection"]
+    },
+    {
+      "before": ["<leader>", "c", "shift+f"],
+      "commands":["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "c", "n"],
+      "commands":["editor.action.rename"]
+    }
+  ],
+  "vim.leader": "\\",
+  "vim.highlightedyank.enable": true,
+  "vim.sneak": true,
+>>>>>>> cd739c2 (updates and fixing)
 }
