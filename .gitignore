@@ -11,6 +11,9 @@ hosts.ini
 !dotfiles/files/.config/Code/User/settings.json
 !dotfiles/files/.config/Code/User/keybindings.json
 
+**/.ssh/**
+!dotfiles/files/.ssh/config
+
 
 !.gitkeep
 !.keep
