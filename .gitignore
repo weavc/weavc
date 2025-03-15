@@ -6,5 +6,11 @@ node_modules/
 hosts.ini
 *.vault
 
+**/.config/Code/**/*
+**/.config/Code/*
+!dotfiles/files/.config/Code/User/settings.json
+!dotfiles/files/.config/Code/User/keybindings.json
+
+
 !.gitkeep
 !.keep
