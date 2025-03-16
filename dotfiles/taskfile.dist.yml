@@ -1,0 +1,59 @@
+version: '3'
+
+tasks:
+
+  env:
+    VERSIONS_GO: 1.23.1
+    VERSIONS_PYTHON: 3
+    VERSIONS_DOTNET: 8.0
+    VERSIONS_NODE: 18
+    VERSION_NVM: 0.39.7
+    PATHS_GO: $HOME/.local
+    PATHS_GOHOME: $HOME/dev/go
+    PATHS_DOTNET: $HOME/.local
+    PATHS_CARGO: $HOME/.cargo
+
+
+  dotfiles:
+    desc: Apply dotfiles to home directory
+    cmds:
+      - stow -S files -d ./ -t $HOME/ --no-folding
+
+  undotfiles:
+    desc: Unstow dotfiles for making changes
+    cmds:
+      - stow -D files -d ./ -t $HOME
+
+  pop-keybinds:
+    desc: Setup gnome keybindings for pop os
+    cmds:
+      - dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>Home', '<Super>1']"
+      - dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+      - dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+      - dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"
+      - dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-1 "['<Shift><Super>Home', '<Shift><Super>exclam']"
+      - dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-2 "['<Shift><Super>quotedbl']"
+      - dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-3 "['<Shift><Super>sterling']"
+      - dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-4 "['<Shift><Super>dollar']"
+
+  install-docker:
+    desc: Install docker and related packages
+    cmds:
+      - sudo apt install -y docker.io docker-compose docker-buildx
+      - sudo usermod -g docker $(whoami)
+
+  sshgen-rsa:
+    desc: Generate rsa ssh keys for your machine
+    cmds:
+      - ssh-keygen -t rsa -C "$(whoami)@$(hostname -s)"
+
+  sshgen-ed25519:
+    desc: Generate ed25519 ssh keys for your machine
+    cmds:
+      - ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
+
+  sshgen-import:
+    desc: Import ssh-ids
+    cmds:
+      - sudo apt install ssh-import-id -y
+      - ssh-import-id gh:weavc
