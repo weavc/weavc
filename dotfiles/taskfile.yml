@@ -5,4 +5,9 @@ tasks:
   dotfiles:
     desc: Apply dotfiles to home directory
     cmds:
-      - stow -S files -d ./ -t $HOME/
+      - stow -S files -d ./ -t $HOME/ --no-folding
+
+  undotfiles:
+    desc: Unstow dotfiles for making changes
+    cmds:
+      - stow -D files -d ./ -t $HOME
