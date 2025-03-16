@@ -1,35 +1,46 @@
-# sudo add-apt-repository ppa:git-core/ppa -y
-# sudo apt-get update
-# sudo apt-get install git -y
-# git --version
+; sudo add-apt-repository ppa:git-core/ppa -y
+; sudo apt-get update
+; sudo apt-get install git -y
+; git --version
 
-[user]
-	name = chris
-	email = weavc@pm.me
+; should be manually set to avoid commiting under incorrect name etc
+; using global will set this file, recommend local
+; git config set user.name chris
+; git config set user.email weavc@pm.me
+; [user]
+; 	name = chris
+; 	email = weavc@pm.me
 
 [core]
+	; set global exclusions here
 	excludeFiles = ~/.gitignore
 	editor = nvim
 
 [branch]
+	; better branch sorting when using git branch --list cw/*
 	sort = -committerdate
 
 [pull]
+	; --no-rebase, can override by using --rebase
 	rebase = false
 
 [merge]
 	conflictstyle = zdiff3
+	; git mergetool
 	tool = nvimdiff
 
 [rebase]
+	; reduces conflicts & easier to rebase changes out
 	autosquash = true
 	autostash = true
 
 [push]
+	; defaults to current branch / remote
 	default = current
 	autoSetupRemote = true
 
 [rerere]
+	; cant remember what this was but it sounded very useful
 	enabled = true
 
 [diff]
