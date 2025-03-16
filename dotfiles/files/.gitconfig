@@ -40,10 +40,11 @@
 	autoSetupRemote = true
 
 [rerere]
-	; cant remember what this was but it sounded very useful
+	; automatically re-solve conflicts you have already solved before
 	enabled = true
 
 [diff]
+	; better diffs
 	algorithm = histogram
 	tool = nvimdiff
 
