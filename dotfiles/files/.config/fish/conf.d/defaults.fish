@@ -10,3 +10,4 @@ if status is-interactive
 
     set -gx GOPATH $HOME/.local/go
 end
+
