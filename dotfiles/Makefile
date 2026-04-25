@@ -1,7 +1,7 @@
 # ======== Variables ==========
 VERSIONS_GO := 1.23.1
 VERSIONS_PYTHON := 3
-VERSIONS_DOTNET := 8.0
+VERSIONS_DOTNET := 10.0
 VERSIONS_NODE := 18
 VERSIONS_NVM := 0.39.7
 
@@ -96,7 +96,7 @@ install/docker:
 ## install/fish: Installs fish.
 .PHONY: install/fish
 install/fish:
-	sudo add-apt-repository ppa:fish-shell/release-3 -y
+	sudo add-apt-repository ppa:fish-shell/release-4 -y
 	sudo apt update
 	sudo apt install -y fish
 	chsh -s /usr/bin/fish

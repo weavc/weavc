@@ -47,4 +47,3 @@
 	; better diffs
 	algorithm = histogram
 	tool = nvimdiff
-
