@@ -15,6 +15,7 @@ def d(base, devs):
     v = (dif**2)*c
     return v
 
+# points from ratings
 def r(ratings):
     t = 0
     for r in ratings:
@@ -22,7 +23,7 @@ def r(ratings):
     return t
 
 ratings = ['XL', 'XL', 'L', 'M', 'L', 'L', 'S', 'M', 'M', 'S']
-devs = 5
+devs = 7
 
 baselines = [{
     'ratings': r(['S', 'L', 'S', 'S', 'L', 'S', 'L', 'S']),
@@ -35,25 +36,17 @@ baselines = [{
 }]
 
 total = r(ratings)
-
-upper = 0
-lower = 0
-all = []
+results = []
 
 for baseline in baselines:
     dv = devs-d(devs, baseline['devs'])
     multiple = total/baseline['ratings']
     weeks = ((baseline['weeks']*baseline['devs'])/dv)*multiple
+    results.append(weeks)
     print(f'Comparing: {baseline} ({dv}, {multiple}, {weeks})')
 
-    all.append(weeks)
-    if upper == 0 or upper < weeks:
-        upper = weeks
-    if lower == 0 or lower > weeks:
-        lower = weeks
-
 print(f'Points: {total}')
-print(f'Weeks (Upper/Lower/Avg): {math.ceil(upper)} / {math.ceil(lower)} / {math.ceil(sum(all, 0)/len(all))}')
+print(f'Weeks (Upper/Lower/Avg): {math.ceil(max(results))} / {math.ceil(min(results))} / {math.ceil(sum(results, 0)/len(results))}')
 
 
 
